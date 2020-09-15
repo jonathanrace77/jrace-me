@@ -1,6 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+var images = {
+  blank: require("./img/blank.png"),
+  sketch: require("./img/sketch.png"),
+  photoshop: require("./img/photoshop.png"),
+  html: require("./img/html5.png"),
+  css: require("./img/css3.png"),
+  sass: require("./img/scss.png"),
+  bootstrap: require("./img/bootstrap.png"),
+  javascript: require("./img/es6.png"),
+  jquery: require("./img/jquery.png"),
+  react: require("./img/react.png"),
+  redux: require("./img/redux.png"),
+  d3: require("./img/d3.png"),
+  wordpress: require("./img/wordpress.png"),
+  git: require("./img/git.png"),
+};
 
 function App() {
   const [isBoxOpen, setIsBoxOpen] = React.useState(1);
@@ -11,9 +27,10 @@ function App() {
     illustrator: 1,
   });
   const [projectTechList, SetProjectTechList] = React.useState([
-    ["sketch", "blank", "blank", "blank", "blank", "blank", "blank"],
-    ["photoshop", "blank", "blank", "blank", "blank", "blank", "blank"],
-    ["photoshop", "illustrator", "blank", "blank", "blank", "blank", "blank"],
+    ["sketch", "photoshop", "html", "sass", "javascript", "jquery", "git"],
+    ["photoshop", "wordpress", "css", "blank", "blank", "blank", "blank"],
+    ["sketch", "photoshop", "html", "sass", "javascript", "jquery", "blank"],
+    ["sketch", "html", "css", "javascript", "jquery", "blank", "blank"],
   ]);
   const handleAllClick = () => setIsBoxOpen(Math.abs(isBoxOpen - 1));
   const boxVisibility = isBoxOpen ? "grid" : "none";
@@ -30,11 +47,29 @@ function App() {
   // When state is updated, update the project selection
   useEffect(() => {
     updateProjectSelection();
+
+    // Center "All button" if nothing is selected & the container isn't showing
+    function checkProperties(obj) {
+      for (var key in obj) {
+        if (obj[key] !== null && obj[key] != "") return false;
+      }
+      return true;
+    }
+
+    if (checkProperties(isSelectedBox) && !isBoxOpen) {
+      document.getElementById(
+        "tech-select-open-button-container"
+      ).style.justifyContent = "center";
+    } else {
+      document.getElementById(
+        "tech-select-open-button-container"
+      ).style.justifyContent = "start";
+    }
   });
 
   // Loop through the project tech array and if any of them are selected (in the selectBox object) then show the element
   const updateProjectSelection = () => {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < projectTechList.length; i++) {
       document.getElementById("project" + i).style.display = "none";
       for (let j = 0; j < 7; j++) {
         if (isSelectedBox[projectTechList[i][j]] === 1) {
@@ -69,11 +104,33 @@ function App() {
     }
   };
 
+  // Creates the tech bar underneath each project
+  function techCreator(projectNumber) {
+    return (
+      <div class="project-skills-container">
+        {[0, 1, 2, 3, 4, 5, 6].map((n) => {
+          var imgSrc = projectTechList[projectNumber][n];
+          return (
+            <div class="tech-square">
+              <img
+                alt="tech used"
+                class="tech-square-img"
+                src={images[imgSrc]}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <h2>Projects</h2>
-      <div onClick={handleAllClick} id="tech-select-open-button">
-        All
+      <div id="tech-select-open-button-container">
+        <div onClick={handleAllClick} id="tech-select-open-button">
+          All
+        </div>
       </div>
       <div id="tech-select-container" style={{ display: boxVisibility }}>
         <div id="tech-select-grid">
@@ -142,9 +199,40 @@ function App() {
           Clear selection
         </div>
       </div>
-      <div id="project0">Project a (uses just sketch)</div>
-      <div id="project1">Project b (uses just photoshop)</div>
-      <div id="project2">Project c (uses photoshop and illustrator)</div>
+      <div id="projects-grid">
+        <div id="project0" class="project">
+          <img
+            class="project-image"
+            alt="project 0"
+            src={require("./img/project0.png")}
+          />
+          {techCreator(0)}
+        </div>
+        <div id="project1" class="project">
+          <img
+            class="project-image"
+            alt="project 1"
+            src={require("./img/project1.png")}
+          />
+          {techCreator(1)}
+        </div>
+        <div id="project2" class="project">
+          <img
+            class="project-image"
+            alt="project 2"
+            src={require("./img/project2.png")}
+          />
+          {techCreator(2)}
+        </div>
+        <div id="project3" class="project">
+          <img
+            class="project-image"
+            alt="project 3"
+            src={require("./img/project3.png")}
+          />
+          {techCreator(3)}
+        </div>
+      </div>
     </div>
   );
 }

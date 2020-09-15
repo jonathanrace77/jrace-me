@@ -15,6 +15,12 @@ code {
     monospace;
 }
 
+.App{
+  display: grid;
+  justify-content: center;
+  padding: 65px;
+}
+
 h2{
   font-family: 'Josefin Sans', sans-serif;
   font-size: 55px;
@@ -34,6 +40,12 @@ h2:after {
   margin-top: 17px;
 }
 
+#tech-select-open-button-container{
+  display: grid;
+  align-content: center;
+  justify-content: start;
+}
+
 #tech-select-open-button{
   display: grid;
   align-content: center;
@@ -41,19 +53,16 @@ h2:after {
   width: 125px;
   height: 36px;
   font-weight: 500;
-  margin-left: 65px;
   letter-spacing: 2px;
   background: #009DDC;
   color: #fff;
 }
 
 #tech-select-container{
-  width: 1260px;
-  max-width: 85vw;
+  max-width: 1260px;
   height: auto;
-  margin-left: 65px;
-  margin-right: 65px;
-  //background: pink;
+  box-shadow: 2px 2px 4px rgb(0,0,0,0.5);
+  margin-bottom: 100px;
 }
 
 #tech-select-grid{
@@ -66,7 +75,6 @@ h2:after {
   padding: 50px 0 50px 0;
   box-sizing: border-box;
   background: #fff;
-  //background: orange;
 }
 
 .tech-column{
@@ -76,7 +84,6 @@ h2:after {
   height: auto;
   margin-left: 50px;
   margin-right: 50px;
-  //background: pink;
 }
 
 #tech-fe-column{
@@ -171,6 +178,49 @@ h2:after {
 .check-label{
   display: grid;
   align-content: center;
+}
+
+#projects-grid{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1260px;
+  justify-content: space-between;
+}
+
+.project{
+  max-width: 400px;
+}
+
+.project-image{
+  max-width: 400px;
+  box-shadow: 2px 2px 4px rgb(0,0,0,0.5);
+}
+
+.project-skills-container{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 56px;
+  margin-left: 13px;
+  margin-right: 13px;
+  margin-bottom: 89px;
+}
+
+.tech-square{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10px;
+  width: 36px;
+  height: 36px;
+  max-width: 36px;
+  max-height: 36px;
+}
+
+.tech-square img{
+  max-width: 36px;
+  max-height: 36px;
 }
 
 /*
