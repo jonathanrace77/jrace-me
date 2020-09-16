@@ -25,6 +25,24 @@ function App() {
     sketch: 1,
     photoshop: 1,
     illustrator: 1,
+    html: 1,
+    css: 1,
+    sass: 1,
+    bootstrap: 1,
+    javascript: 1,
+    jquery: 1,
+    react: 1,
+    redux: 1,
+    d3: 1,
+    wordpress: 1,
+    node: 1,
+    php: 1,
+    sql: 1,
+    mongodb: 1,
+    express: 1,
+    eslint: 1,
+    jest: 1,
+    git: 1,
   });
   const [projectTechList, SetProjectTechList] = React.useState([
     ["sketch", "photoshop", "html", "sass", "javascript", "jquery", "git"],
@@ -51,7 +69,7 @@ function App() {
     // Center "All button" if nothing is selected & the container isn't showing
     function checkProperties(obj) {
       for (var key in obj) {
-        if (obj[key] !== null && obj[key] != "") return false;
+        if (obj[key] !== null && obj[key] !== "") return false;
       }
       return true;
     }
@@ -92,7 +110,29 @@ function App() {
 
   // Reset the state of all checkboxes to 0
   const handleClearSelectionClick = () => {
-    setIsSelectedBox({ sketch: 0, photoshop: 0, illustrator: 0 });
+    setIsSelectedBox({
+      sketch: 0,
+      photoshop: 0,
+      illustrator: 0,
+      html: 0,
+      css: 0,
+      sass: 0,
+      bootstrap: 0,
+      javascript: 0,
+      jquery: 0,
+      react: 0,
+      redux: 0,
+      d3: 0,
+      wordpress: 0,
+      node: 0,
+      php: 0,
+      sql: 0,
+      mongodb: 0,
+      express: 0,
+      eslint: 0,
+      jest: 0,
+      git: 0,
+    });
 
     // Get desired elements
     var element = document.getElementsByClassName("check-box");
@@ -189,11 +229,306 @@ function App() {
             </div>
           </div>
           <div id="tech-fe-column">
-            <div id="tech-fe-l-column" className="tech-column"></div>
-            <div id="tech-fe-r-column" className="tech-column"></div>
+            <div id="tech-fe-l-column" className="tech-column">
+              <div class="tech-title-container">
+                <i class="fas fa-desktop tech-icons"></i>
+                <div>
+                  <h4>FRONT-END</h4>
+                </div>
+              </div>
+              <div class="labels-container">
+                <ul class="labels-list">
+                  <li>
+                    <div class="check-container">
+                      <div id="html-check-label" class="check-label">
+                        HTML5
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="html"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="css-check-label" class="check-label">
+                        CSS3
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="css"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="sass-check-label" class="check-label">
+                        Sass
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="sass"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="bootstrap-check-label" class="check-label">
+                        Bootstrap
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="bootstrap"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="javascript-check-label" class="check-label">
+                        JavaScript
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="javascript"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="tech-fe-r-column" className="tech-column">
+              <div class="tech-title-container">
+                <div>
+                  <h4>FRONT-END</h4>
+                </div>
+              </div>
+              <div class="labels-container">
+                <ul class="labels-list">
+                  <li>
+                    <div class="check-container">
+                      <div id="jquery-check-label" class="check-label">
+                        jQuery
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="jquery"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="react-check-label" class="check-label">
+                        React JS
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="react"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="redux-check-label" class="check-label">
+                        Redux
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="redux"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="d3-check-label" class="check-label">
+                        D3 JS
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="d3"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="check-container">
+                      <div id="wordpress-check-label" class="check-label">
+                        Wordpress
+                      </div>
+                      <div
+                        onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                        id="wordpress"
+                        class="check-box check-box-checked"
+                      >
+                        <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div id="tech-be-column" className="tech-column"></div>
-          <div id="tech-other-column" className="tech-column"></div>
+          <div id="tech-be-column" className="tech-column">
+            <div class="tech-title-container">
+              <i class="fas fa-code tech-icons"></i>
+              <div>
+                <h4>BACK-END</h4>
+              </div>
+            </div>
+            <div class="labels-container">
+              <ul class="labels-list">
+                <li>
+                  <div class="check-container">
+                    <div id="node-check-label" class="check-label">
+                      Node JS
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="node"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="check-container">
+                    <div id="php-check-label" class="check-label">
+                      PHP
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="php"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="check-container">
+                    <div id="sql-check-label" class="check-label">
+                      SQL
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="sql"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="check-container">
+                    <div id="mongodb-check-label" class="check-label">
+                      MongoDB
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="mongodb"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="check-container">
+                    <div id="express-check-label" class="check-label">
+                      Express
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="express"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="tech-other-column" className="tech-column">
+            <div class="tech-title-container">
+              <i class="fas fa-cogs tech-icons"></i>
+              <div>
+                <h4>OTHER</h4>
+              </div>
+            </div>
+            <div class="labels-container">
+              <ul class="labels-list">
+                <li>
+                  <div class="check-container">
+                    <div id="eslint-check-label" class="check-label">
+                      ESLint
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="eslint"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="check-container">
+                    <div id="jest-check-label" class="check-label">
+                      JEST
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="jest"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="check-container">
+                    <div id="git-check-label" class="check-label">
+                      GIT
+                    </div>
+                    <div
+                      onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+                      id="git"
+                      class="check-box check-box-checked"
+                    >
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div onClick={handleClearSelectionClick} id="clear-selection-button">
           Clear selection
