@@ -22,6 +22,11 @@ var images = {
   redux: require("./img/redux.png"),
   d3: require("./img/d3.png"),
   wordpress: require("./img/wordpress.png"),
+  sql: require("./img/sql.png"),
+  php: require("./img/php.png"),
+  node: require("./img/node.png"),
+  express: require("./img/express.png"),
+  mongodb: require("./img/mongodb.png"),
   git: require("./img/git.png"),
   jonathan: require("./img/jonathan-profile-pic.jpg"),
   pdf: require("./img/pdf-logo.png"),
@@ -89,9 +94,8 @@ function App() {
     tl.to(".about-skill-bar-fill-design", {
       scrollTrigger: {
         trigger: "#design-about-skill-box",
-        start: "top bottom",
-        end: "center center",
-        //markers: true,
+        start: "bottom bottom",
+        markers: true,
         scrub: true,
       },
       width: "100%",
@@ -100,9 +104,8 @@ function App() {
     tl.to(".about-skill-bar-fill-front-end", {
       scrollTrigger: {
         trigger: "#front-end-about-skill-box",
-        start: "top bottom",
-        end: "center center",
-        //markers: true,
+        start: "bottom bottom",
+        markers: true,
         scrub: true,
       },
       width: "100%",
@@ -286,6 +289,7 @@ function App() {
         </div>
 
         <div id="front-end-about-skill-box" className="about-skill-box">
+
           <div className="about-skill-container">
             <div className="about-skill-bar">
               <div
@@ -321,6 +325,70 @@ function App() {
           <div className="about-skill-container">
             <div className="about-skill-bar">
               <div
+                id="wordpress-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech wordpress" src={images.wordpress}></img>
+                <div className="about-skill-title">Wordpress</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Experienced</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="javascript-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech javascript" src={images.javascript}></img>
+                <div className="about-skill-title">JavaScript</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Experienced</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="jquery-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech jquery" src={images.jquery}></img>
+                <div className="about-skill-title">jQuery</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Experienced</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="react-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech react" src={images.react}></img>
+                <div className="about-skill-title">React</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Experienced</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
                 id="sass-bar"
                 className="about-skill-bar-fill about-skill-bar-fill-front-end"
               ></div>
@@ -333,20 +401,69 @@ function App() {
             </div>
             <div className="about-skill-level">Proficient</div>
           </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="d3-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech d3" src={images.d3}></img>
+                <div className="about-skill-title">D3 JS</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Proficient</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="redux-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech redux" src={images.redux}></img>
+                <div className="about-skill-title">Redux</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Familiar</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="bootstrap-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech bootstrap" src={images.bootstrap}></img>
+                <div className="about-skill-title">Bootstrap</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Familiar</div>
+          </div>
+
         </div>
 
         <div id="back-end-about-skill-box" className="about-skill-box">
           <div className="about-skill-container">
             <div className="about-skill-bar">
               <div
-                id="sass-bar"
+                id="sql-bar"
                 className="about-skill-bar-fill about-skill-bar-fill-front-end"
               ></div>
             </div>
             <div className="about-logo-bar-container">
               <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
+                <img alt="tech sql" src={images.sql}></img>
+                <div className="about-skill-title">SQL</div>
               </div>
             </div>
 
@@ -355,33 +472,65 @@ function App() {
           <div className="about-skill-container">
             <div className="about-skill-bar">
               <div
-                id="sass-bar"
+                id="php-bar"
                 className="about-skill-bar-fill about-skill-bar-fill-front-end"
               ></div>
             </div>
             <div className="about-logo-bar-container">
               <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
+                <img alt="tech php" src={images.php}></img>
+                <div className="about-skill-title">PHP</div>
               </div>
             </div>
 
-            <div className="about-skill-level">Proficient</div>
+            <div className="about-skill-level">Familiar</div>
           </div>
           <div className="about-skill-container">
             <div className="about-skill-bar">
               <div
-                id="sass-bar"
+                id="node-bar"
                 className="about-skill-bar-fill about-skill-bar-fill-front-end"
               ></div>
             </div>
             <div className="about-logo-bar-container">
               <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
+                <img alt="tech node" src={images.node}></img>
+                <div className="about-skill-title">Node JS</div>
               </div>
             </div>
-            <div className="about-skill-level">Proficient</div>
+            <div className="about-skill-level">Familiar</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="express-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech express" src={images.express}></img>
+                <div className="about-skill-title">Express</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Familiar</div>
+          </div>
+
+          <div className="about-skill-container">
+            <div className="about-skill-bar">
+              <div
+                id="mongodb-bar"
+                className="about-skill-bar-fill about-skill-bar-fill-front-end"
+              ></div>
+            </div>
+            <div className="about-logo-bar-container">
+              <div className="about-skill-logo">
+                <img alt="tech mongodb" src={images.mongodb}></img>
+                <div className="about-skill-title">MongoDB</div>
+              </div>
+            </div>
+            <div className="about-skill-level">Familiar</div>
           </div>
         </div>
 
@@ -435,7 +584,6 @@ function App() {
           </div>
         </div>
       </div>
-
       <div className="projects-container">
         <div className="projects-layer">
           <h2>Projects</h2>

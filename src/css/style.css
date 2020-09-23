@@ -667,6 +667,8 @@ code {
   background: #0f94c2;
   width: 0;
   height: 22px;
+  -webkit-transition: 10s;
+  transition: 10s;
 }
 
 .about-skill-level {
@@ -699,8 +701,56 @@ code {
   max-width: 100%;
 }
 
+#wordpress-bar {
+  max-width: 80%;
+}
+
+#javascript-bar {
+  max-width: 80%;
+}
+
+#jquery-bar {
+  max-width: 70%;
+}
+
+#react-bar {
+  max-width: 70%;
+}
+
 #sass-bar {
   max-width: 60%;
+}
+
+#d3-bar {
+  max-width: 50%;
+}
+
+#redux-bar {
+  max-width: 40%;
+}
+
+#bootstrap-bar {
+  max-width: 40%;
+}
+
+#sql-bar {
+  max-width: 60%;
+}
+
+#php-bar {
+  max-width: 40%;
+}
+
+#node-bar {
+  max-width: 40%;
+}
+
+#express-bar {
+  max-width: 40%;
+}
+
+#mongodb-bar {
+  max-width: 40%;
 }
 
 .about-skill-level {
