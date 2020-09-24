@@ -43,12 +43,12 @@ code {
 }
 
 .about-jonathan-box {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 189px auto;
   max-width: 90vw;
   padding: 25px;
   padding-bottom: 15px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   backdrop-filter: blur(10px);
   background-color: rgba(69, 71, 74, 0.25);
 }
@@ -118,7 +118,7 @@ code {
 .about-jonathan-box-left {
   display: grid;
   align-content: space-between;
-  margin-right: 25px;
+  justify-content: center;
 }
 
 .about-jonathan-box-left img {
@@ -140,6 +140,31 @@ code {
 }
 
 .cv-download-container a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cv-download-container-bottom {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  width: 189px;
+  display: none;
+  align-content: center;
+  justify-content: left;
+}
+
+.cv-download-container-bottom div {
+  margin: auto 0 auto 0;
+}
+
+.cv-download-container-bottom img {
+  width: 40px;
+  margin-right: 25px;
+}
+
+.cv-download-container-bottom a {
   text-decoration: none;
   color: #fff;
   font-size: 14px;
@@ -168,13 +193,19 @@ code {
   letter-spacing: 0.71px;
 }
 
+.about-jonathan-box-right {
+  width: 100%;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+
 .about-jonathan-box-right p {
   margin: 0;
   margin-bottom: 10px;
   text-align: left;
   color: #fff;
-  width: 502px;
-  max-width: 80vw;
+  //width: 502px;
+  max-width: 502px;
   letter-spacing: 0.71px;
 }
 
@@ -197,7 +228,7 @@ code {
   padding: 25px;
   padding-bottom: 0px;
   margin-bottom: 25px;
-  width: 760px;
+  width: 766px;
   max-width: 90vw;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
@@ -252,7 +283,7 @@ code {
   background: #0f94c2;
   width: 0;
   height: 22px;
-  transition: 10s;
+  transition: 1s;
 }
 
 .about-skill-level {
@@ -263,24 +294,16 @@ code {
   height: 36px;
 }
 
-#photoshop-bar {
-  max-width: 80%;
-}
-
-#sketch-bar {
-  max-width: 70%;
-}
-
-#illustrator-bar {
-  max-width: 40%;
-}
-
 #html-bar {
-  max-width: 100%;
+  max-width: 90%;
 }
 
 #css-bar {
-  max-width: 100%;
+  max-width: 90%;
+}
+
+#photoshop-bar {
+  max-width: 80%;
 }
 
 #wordpress-bar {
@@ -291,11 +314,11 @@ code {
   max-width: 80%;
 }
 
-#jquery-bar {
+#react-bar {
   max-width: 70%;
 }
 
-#react-bar {
+#sketch-bar {
   max-width: 70%;
 }
 
@@ -303,45 +326,45 @@ code {
   max-width: 60%;
 }
 
-#d3-bar {
-  max-width: 50%;
-}
-
-#redux-bar {
-  max-width: 40%;
-}
-
-#bootstrap-bar {
-  max-width: 40%;
-}
-
-#sql-bar {
-  max-width: 60%;
-}
-
-#php-bar {
-  max-width: 40%;
-}
-
-#node-bar {
-  max-width: 40%;
-}
-
-#express-bar {
-  max-width: 40%;
-}
-
-#mongodb-bar {
-  max-width: 40%;
-}
-
-
-
 .about-skill-level {
   margin: auto 0 auto 0;
 }
 
 @media only screen and (max-width: 850px) {
+  .about-logo-bar-container {
+    width: auto;
+    max-width: 66vw;
+  }
+
+  .about-skill-bar-container {
+    width: 66vw;
+    height: 22px;
+  }
+
+  .about-skill-bar {
+    width: 100%;
+    max-width: 66vw;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .about-logo-bar-container {
+    width: auto;
+    max-width: 6vw;
+  }
+
+  .about-skill-bar-container {
+    width: 62vw;
+    height: 22px;
+  }
+
+  .about-skill-bar {
+    width: 100%;
+    max-width: 62vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
   .about-logo-bar-container {
     width: auto;
     max-width: 100%;
@@ -359,5 +382,47 @@ code {
 
   .about-skill-level {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .about-jonathan-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .about-jonathan-box-left img {
+    height: 100%;
+    margin-bottom: 0px;
+    width: 100%;
+  }
+
+  .about-jonathan-box-left {
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+
+  .about-jonathan-box-right {
+    padding-left: 0;
+  }
+
+  .jonathan-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  .cv-download-container {
+    display: none;
+  }
+
+  .cv-download-container-bottom {
+    display: flex;
+  }
+
+  .about-jonathan-box-right p {
+    width: 100%;
+    max-width: 80vw;
   }
 }

@@ -32,6 +32,8 @@ var images = {
   pdf: require("./img/pdf-logo.png"),
 };
 
+var cv = require("./JonathanRaceCv.pdf");
+
 function App() {
   const [isBoxOpen, setIsBoxOpen] = React.useState(0);
   const [isSelectedBox, setIsSelectedBox] = React.useState({
@@ -93,22 +95,13 @@ function App() {
 
     tl.to(".about-skill-bar-fill-design", {
       scrollTrigger: {
-        trigger: "#design-about-skill-box",
+        trigger: "#experienced-about-skill-box",
         start: "bottom bottom",
         markers: true,
-        scrub: true,
+        scrub: false,
       },
       width: "100%",
-    });
-
-    tl.to(".about-skill-bar-fill-front-end", {
-      scrollTrigger: {
-        trigger: "#front-end-about-skill-box",
-        start: "bottom bottom",
-        markers: true,
-        scrub: true,
-      },
-      width: "100%",
+      stagger: 0.2,
     });
   });
 
@@ -191,6 +184,47 @@ function App() {
     );
   }
 
+  // Template for Skill bars
+  function skillBarConstructor(tech, techName, level) {
+    return (
+      <div className="about-skill-container">
+        <div className="about-skill-bar">
+          <div
+            id={tech + "-bar"}
+            className="about-skill-bar-fill about-skill-bar-fill-design"
+          ></div>
+        </div>
+        <div className="about-logo-bar-container">
+          <div className="about-skill-logo">
+            <img alt={tech + " css"} src={images[tech]}></img>
+            <div className="about-skill-title">{techName}</div>
+          </div>
+        </div>
+        <div className="about-skill-level">{level}</div>
+      </div>
+    );
+  }
+
+  // Template for tech Select boxes
+  function techSelectConstructor(tech) {
+    return (
+      <li>
+        <div className="check-container">
+          <div id={tech + "-check-label"} className="check-label">
+            Sketch
+          </div>
+          <div
+            onClick={(e) => handleCheckBoxClick(e.currentTarget)}
+            id={tech}
+            className="check-box check-box-checked"
+          >
+            <i className="fas fa-check"></i>
+          </div>
+        </div>
+      </li>
+    );
+  }
+
   return (
     <div className="App">
       <div className="hero-container"></div>
@@ -199,12 +233,6 @@ function App() {
         <div className="about-jonathan-box">
           <div className="corner1 about-corner"></div>
           <div className="corner2 about-corner"></div>
-          <div className="corner3 about-corner"></div>
-          <div className="corner4 about-corner"></div>
-          <div className="corner5 about-corner"></div>
-          <div className="corner6 about-corner"></div>
-          <div className="corner7 about-corner"></div>
-          <div className="corner8 about-corner"></div>
           <div className="about-jonathan-box-left">
             <div className="jonathan-pic-container">
               <img alt="jonathan profile pic" src={images.jonathan}></img>
@@ -214,7 +242,7 @@ function App() {
                 <img alt="jonathan cv download button" src={images.pdf}></img>
               </div>
               <div>
-                <a>Download my cv</a>
+                <a href={cv}>Download my cv</a>
               </div>
             </div>
           </div>
@@ -236,352 +264,34 @@ function App() {
               there, <b>the sky is the limit!</b>
             </p>
           </div>
-        </div>
-
-        <div id="design-about-skill-box" className="about-skill-box">
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="photoshop-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-design"
-              ></div>
+          <div className="cv-download-container-bottom">
+            <div>
+              <img alt="jonathan cv download button" src={images.pdf}></img>
             </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech photoshop" src={images.photoshop}></img>
-                <div className="about-skill-title">Photoshop</div>
-              </div>
+            <div>
+              <a href={cv}>Download my cv</a>
             </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="sketch-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-design"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech sketch" src={images.sketch}></img>
-                <div className="about-skill-title">Sketch</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="illustrator-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-design"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech illustrator" src={images.illustrator}></img>
-                <div className="about-skill-title">Illustrator</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Familiar</div>
           </div>
         </div>
 
-        <div id="front-end-about-skill-box" className="about-skill-box">
+        <div id="experienced-about-skill-box" className="about-skill-box">
+          <div className="corner3 about-corner"></div>
+          <div className="corner4 about-corner"></div>
 
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="html-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech html" src={images.html}></img>
-                <div className="about-skill-title">HTML</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
+          {skillBarConstructor("html", "HTML", "Experienced")}
+          {skillBarConstructor("css", "CSS", "Experienced")}
+          {skillBarConstructor("javascript", "JavaScript", "Experienced")}
+          {skillBarConstructor("wordpress", "Wordpress", "Experienced")}
+          {skillBarConstructor("photoshop", "Photoshop", "Experienced")}
+          {skillBarConstructor("react", "React", "Proficient")}
+          {skillBarConstructor("sketch", "Sketch", "Proficient")}
+          {skillBarConstructor("sass", "Sass", "Proficient")}
 
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="css-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech css" src={images.css}></img>
-                <div className="about-skill-title">CSS</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="wordpress-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech wordpress" src={images.wordpress}></img>
-                <div className="about-skill-title">Wordpress</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="javascript-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech javascript" src={images.javascript}></img>
-                <div className="about-skill-title">JavaScript</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="jquery-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech jquery" src={images.jquery}></img>
-                <div className="about-skill-title">jQuery</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="react-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech react" src={images.react}></img>
-                <div className="about-skill-title">React</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Experienced</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="sass-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Proficient</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="d3-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech d3" src={images.d3}></img>
-                <div className="about-skill-title">D3 JS</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Proficient</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="redux-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech redux" src={images.redux}></img>
-                <div className="about-skill-title">Redux</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Familiar</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="bootstrap-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech bootstrap" src={images.bootstrap}></img>
-                <div className="about-skill-title">Bootstrap</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Familiar</div>
-          </div>
-
-        </div>
-
-        <div id="back-end-about-skill-box" className="about-skill-box">
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="sql-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech sql" src={images.sql}></img>
-                <div className="about-skill-title">SQL</div>
-              </div>
-            </div>
-
-            <div className="about-skill-level">Proficient</div>
-          </div>
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="php-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech php" src={images.php}></img>
-                <div className="about-skill-title">PHP</div>
-              </div>
-            </div>
-
-            <div className="about-skill-level">Familiar</div>
-          </div>
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="node-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech node" src={images.node}></img>
-                <div className="about-skill-title">Node JS</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Familiar</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="express-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech express" src={images.express}></img>
-                <div className="about-skill-title">Express</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Familiar</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="mongodb-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech mongodb" src={images.mongodb}></img>
-                <div className="about-skill-title">MongoDB</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Familiar</div>
-          </div>
-        </div>
-
-        <div id="other-skill-box" className="about-skill-box">
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="sass-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Proficient</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="sass-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Proficient</div>
-          </div>
-
-          <div className="about-skill-container">
-            <div className="about-skill-bar">
-              <div
-                id="sass-bar"
-                className="about-skill-bar-fill about-skill-bar-fill-front-end"
-              ></div>
-            </div>
-            <div className="about-logo-bar-container">
-              <div className="about-skill-logo">
-                <img alt="tech sass" src={images.sass}></img>
-                <div className="about-skill-title">Sass</div>
-              </div>
-            </div>
-            <div className="about-skill-level">Proficient</div>
-          </div>
+          <p>
+            Further to this, I have familiarity (taken courses / built personal
+            projects) with the following: Illustrator, Bootstrap, jQuery, Redux,
+            D3 JS, Node JS, PHP, SQL, MongoDB, Express, ESLint, JEST & GIT
+          </p>
         </div>
       </div>
       <div className="projects-container">
@@ -610,20 +320,7 @@ function App() {
                 </div>
                 <div className="labels-container">
                   <ul className="labels-list">
-                    <li>
-                      <div className="check-container">
-                        <div id="sketch-check-label" className="check-label">
-                          Sketch
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="sketch"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
+                    {techSelectConstructor('sketch')}
                     <li>
                       <div className="check-container">
                         <div id="photoshop-check-label" className="check-label">
