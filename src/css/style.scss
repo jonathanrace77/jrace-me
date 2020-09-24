@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+h2{
+  transition: 1s;
+}
+
 .hero-container {
   height: 1000px;
 }
@@ -123,6 +127,18 @@ code {
 
 .about-jonathan-box-left img {
   width: 189px;
+}
+
+.jonathan-box-left-gsap{
+  transition: 1s;
+}
+
+.about-jonathan-box-right-gsap{
+  transition: 1s;
+}
+
+#extra-tech-skills-gsap{
+  transition: 1s;
 }
 
 .cv-download-container {
@@ -280,10 +296,10 @@ code {
 .about-skill-bar-fill {
   position: relative;
   left: 0;
-  background: #0f94c2;
   width: 0;
+  background: #0f94c2;
   height: 22px;
-  transition: 1s;
+  transition: 1s ease-in-out;
 }
 
 .about-skill-level {

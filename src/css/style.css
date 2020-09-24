@@ -320,6 +320,8 @@ h2:after {
 
 .project {
   width: 400px;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .project-image {
@@ -408,6 +410,11 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h2 {
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .hero-container {
@@ -510,6 +517,21 @@ code {
 
 .about-jonathan-box-left img {
   width: 189px;
+}
+
+.jonathan-box-left-gsap {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.about-jonathan-box-right-gsap {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+#extra-tech-skills-gsap {
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .cv-download-container {
@@ -699,11 +721,11 @@ code {
 .about-skill-bar-fill {
   position: relative;
   left: 0;
-  background: #0f94c2;
   width: 0;
+  background: #0f94c2;
   height: 22px;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .about-skill-level {

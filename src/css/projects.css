@@ -59,6 +59,8 @@ h2:after {
 
 .project {
   width: 400px;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .project-image {

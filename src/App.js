@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
+import gsap from "gsap";
 import "./css/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-const tl = gsap.timeline(); // timeline
+import animations from "./animations.js";
 
 var images = {
   blank: require("./img/blank.png"),
@@ -92,18 +89,12 @@ function App() {
   // When state is updated, update the project selection
   useEffect(() => {
     updateProjectSelection();
-
-    tl.to(".about-skill-bar-fill-design", {
-      scrollTrigger: {
-        trigger: "#experienced-about-skill-box",
-        start: "bottom bottom",
-        markers: true,
-        scrub: false,
-      },
-      width: "100%",
-      stagger: 0.2,
-    });
   });
+
+  // code to run on component mount
+  useEffect(() => {
+    animations();
+  }, []);
 
   // Loop through the project tech array and if any of them are selected (in the selectBox object) then show the element
   const updateProjectSelection = () => {
@@ -206,12 +197,12 @@ function App() {
   }
 
   // Template for tech Select boxes
-  function techSelectConstructor(tech) {
+  function techSelectConstructor(tech, techName) {
     return (
       <li>
         <div className="check-container">
           <div id={tech + "-check-label"} className="check-label">
-            Sketch
+            {techName}
           </div>
           <div
             onClick={(e) => handleCheckBoxClick(e.currentTarget)}
@@ -229,15 +220,16 @@ function App() {
     <div className="App">
       <div className="hero-container"></div>
       <div className="about-container">
-        <h2>About</h2>
+        <h2 id="about-title">About</h2>
+
         <div className="about-jonathan-box">
           <div className="corner1 about-corner"></div>
           <div className="corner2 about-corner"></div>
           <div className="about-jonathan-box-left">
-            <div className="jonathan-pic-container">
+            <div className="jonathan-pic-container jonathan-box-left-gsap">
               <img alt="jonathan profile pic" src={images.jonathan}></img>
             </div>
-            <div className="cv-download-container">
+            <div className="cv-download-container jonathan-box-left-gsap">
               <div>
                 <img alt="jonathan cv download button" src={images.pdf}></img>
               </div>
@@ -247,15 +239,17 @@ function App() {
             </div>
           </div>
           <div className="about-jonathan-box-right">
-            <h3>Jonathan Race</h3>
-            <h4>Front-End Web Developer</h4>
-            <p>
+            <h3 className="about-jonathan-box-right-gsap">Jonathan Race</h3>
+            <h4 className="about-jonathan-box-right-gsap">
+              Front-End Web Developer
+            </h4>
+            <p className="about-jonathan-box-right-gsap">
               I've been working on web design for years now and I love the
               combination of problem-solving and creativity, it fuels my passion
               for each and every project, and I love learning new things every
               step of the way.
             </p>
-            <p>
+            <p className="about-jonathan-box-right-gsap">
               {" "}
               I would love to work with you on your project. I build websites
               that are responsive, fast and designed to enhance the user's
@@ -273,7 +267,6 @@ function App() {
             </div>
           </div>
         </div>
-
         <div id="experienced-about-skill-box" className="about-skill-box">
           <div className="corner3 about-corner"></div>
           <div className="corner4 about-corner"></div>
@@ -287,7 +280,7 @@ function App() {
           {skillBarConstructor("sketch", "Sketch", "Proficient")}
           {skillBarConstructor("sass", "Sass", "Proficient")}
 
-          <p>
+          <p id="extra-tech-skills-gsap">
             Further to this, I have familiarity (taken courses / built personal
             projects) with the following: Illustrator, Bootstrap, jQuery, Redux,
             D3 JS, Node JS, PHP, SQL, MongoDB, Express, ESLint, JEST & GIT
@@ -296,7 +289,7 @@ function App() {
       </div>
       <div className="projects-container">
         <div className="projects-layer">
-          <h2>Projects</h2>
+          <h2 id="projects-title">Projects</h2>
           <div id="tech-select-open-button-container">
             <div onClick={handleAllButtonClick} id="tech-select-open-button">
               <div>All Projects</div>
@@ -320,38 +313,9 @@ function App() {
                 </div>
                 <div className="labels-container">
                   <ul className="labels-list">
-                    {techSelectConstructor('sketch')}
-                    <li>
-                      <div className="check-container">
-                        <div id="photoshop-check-label" className="check-label">
-                          Photoshop
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="photoshop"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div
-                          id="illustrator-check-label"
-                          className="check-label"
-                        >
-                          Illustrator
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="illustrator"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
+                    {techSelectConstructor("sketch", "Sketch")}
+                    {techSelectConstructor("photoshop", "Photoshop")}
+                    {techSelectConstructor("illustrator", "Illustrator")}
                   </ul>
                 </div>
               </div>
@@ -365,92 +329,11 @@ function App() {
                   </div>
                   <div className="labels-container">
                     <ul className="labels-list">
-                      <li>
-                        <div className="check-container">
-                          <div id="html-check-label" className="check-label">
-                            HTML5
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="html"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div id="css-check-label" className="check-label">
-                            CSS3
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="css"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div id="sass-check-label" className="check-label">
-                            Sass
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="sass"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div
-                            id="bootstrap-check-label"
-                            className="check-label"
-                          >
-                            Bootstrap
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="bootstrap"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div
-                            id="javascript-check-label"
-                            className="check-label"
-                          >
-                            JavaScript
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="javascript"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
+                      {techSelectConstructor("html", "HTML")}
+                      {techSelectConstructor("css", "CSS")}
+                      {techSelectConstructor("sass", "Sass")}
+                      {techSelectConstructor("bootstrap", "Bootstrap")}
+                      {techSelectConstructor("javascript", "JavaScript")}
                     </ul>
                   </div>
                 </div>
@@ -462,89 +345,11 @@ function App() {
                   </div>
                   <div className="labels-container">
                     <ul className="labels-list">
-                      <li>
-                        <div className="check-container">
-                          <div id="jquery-check-label" className="check-label">
-                            jQuery
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="jquery"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div id="react-check-label" className="check-label">
-                            React JS
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="react"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div id="redux-check-label" className="check-label">
-                            Redux
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="redux"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div id="d3-check-label" className="check-label">
-                            D3 JS
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="d3"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="check-container">
-                          <div
-                            id="wordpress-check-label"
-                            className="check-label"
-                          >
-                            Wordpress
-                          </div>
-                          <div
-                            onClick={(e) =>
-                              handleCheckBoxClick(e.currentTarget)
-                            }
-                            id="wordpress"
-                            className="check-box check-box-checked"
-                          >
-                            <i className="fas fa-check"></i>
-                          </div>
-                        </div>
-                      </li>
+                      {techSelectConstructor("jquery", "jQuery")}
+                      {techSelectConstructor("react", "React JS")}
+                      {techSelectConstructor("redux", "Redux")}
+                      {techSelectConstructor("d3", "D3 JS")}
+                      {techSelectConstructor("wordpress", "Wordpress")}
                     </ul>
                   </div>
                 </div>
@@ -558,76 +363,11 @@ function App() {
                 </div>
                 <div className="labels-container">
                   <ul className="labels-list">
-                    <li>
-                      <div className="check-container">
-                        <div id="node-check-label" className="check-label">
-                          Node JS
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="node"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div id="php-check-label" className="check-label">
-                          PHP
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="php"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div id="sql-check-label" className="check-label">
-                          SQL
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="sql"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div id="mongodb-check-label" className="check-label">
-                          MongoDB
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="mongodb"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div id="express-check-label" className="check-label">
-                          Express
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="express"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
+                    {techSelectConstructor("node", "Node JS")}
+                    {techSelectConstructor("php", "PHP")}
+                    {techSelectConstructor("sql", "SQL")}
+                    {techSelectConstructor("mongodb", "MongoDB")}
+                    {techSelectConstructor("express", "Express")}
                   </ul>
                 </div>
               </div>
@@ -640,48 +380,9 @@ function App() {
                 </div>
                 <div className="labels-container">
                   <ul className="labels-list">
-                    <li>
-                      <div className="check-container">
-                        <div id="eslint-check-label" className="check-label">
-                          ESLint
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="eslint"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div id="jest-check-label" className="check-label">
-                          JEST
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="jest"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="check-container">
-                        <div id="git-check-label" className="check-label">
-                          GIT
-                        </div>
-                        <div
-                          onClick={(e) => handleCheckBoxClick(e.currentTarget)}
-                          id="git"
-                          className="check-box check-box-checked"
-                        >
-                          <i className="fas fa-check"></i>
-                        </div>
-                      </div>
-                    </li>
+                    {techSelectConstructor("eslint", "ESLint")}
+                    {techSelectConstructor("jest", "JEST")}
+                    {techSelectConstructor("git", "GIT")}
                   </ul>
                 </div>
               </div>
@@ -729,6 +430,7 @@ function App() {
           </div>
         </div>
       </div>
+      <div className="hero-container"></div>
     </div>
   );
 }
