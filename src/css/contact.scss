@@ -1,0 +1,130 @@
+#contact {
+  position: relative;
+  height: auto;
+  background: #252934;
+  color: #fff;
+  padding: 0 0;
+}
+
+#contact-container {
+  background-color: #252934;
+  padding: 65px 0 0 0;
+}
+
+#contact-container h2:after {
+  background-color: #fff;
+}
+
+#contact > div {
+  margin: 0;
+}
+
+#contact-text {
+  margin: 0;
+  width: auto;
+  p {
+    margin: 30px;
+    margin-top: 0;
+    width: auto;
+  }
+}
+
+#contact-form {
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+}
+
+#name {
+  width: 500px;
+  padding: 10px;
+  margin: 5px;
+  margin-top: 0;
+  height: 18px;
+  border-radius: 3px;
+  border-style: none;
+  background: rgb(30, 36, 45);
+  border-width: 1px;
+  font-size: 16px;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+}
+
+#email {
+  width: 500px;
+  padding: 10px;
+  margin: 5px;
+  height: 18px;
+  border-radius: 3px;
+  border-style: none;
+  background: rgb(30, 36, 45);
+  border-width: 1px;
+  font-size: 16px;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+}
+
+#message {
+  width: 500px;
+  vertical-align: top;
+  padding: 10px 10px 130px 10px;
+  margin: 5px;
+  height: 10px;
+  border-radius: 3px;
+  border-style: none;
+  background: rgb(30, 36, 45);
+  border-width: 1px;
+  font-size: 16px;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+}
+
+#submit-button {
+  color: #fff;
+  background: #dc416a;
+  width: 100px;
+  height: 38px;
+  margin: 5px;
+  margin-bottom: 91px;
+  border-style: none;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+}
+
+#submit-button:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+}
+
+.contact-form-gsap {
+  transition: 1s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(30, 36, 45) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media only screen and (max-width: 500px) {
+  #name {
+    width: 80vw;
+  }
+
+  #email {
+    width: 80vw;
+  }
+
+  #message {
+    width: 80vw;
+  }
+}

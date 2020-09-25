@@ -52,6 +52,7 @@ h2:after {
 }
 
 .project-image {
+  display: block;
   width: 400px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -68,6 +69,7 @@ h2:after {
   padding-right: 10px;
   margin-bottom: 89px;
   width: 350px;
+  display: none;
 }
 
 .tech-square {

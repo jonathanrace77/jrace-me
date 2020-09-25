@@ -1,0 +1,41 @@
+footer {
+  display: grid;
+  justify-content: center;
+  background: #111;
+  padding: 65px;
+}
+
+#copyright p {
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 0;
+  margin: 0;
+}
+
+#copyright span {
+  color: #0f94c2;
+}
+
+#social-footer {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.social-media-icons {
+  color: #fff;
+  font-size: 30px;
+  margin-left: 32.5px;
+  margin-right: 32.5px;
+}
+
+#social-footer a:hover > i {
+  color: #0f94c2;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 510px) {
+  .social-media-icons {
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+  }
+}

@@ -1,4 +1,4 @@
-@import "tech-box-container", "projects";
+@import "tech-box-container", "projects", "contact", "footer";
 
 body {
   margin: 0;
@@ -16,7 +16,14 @@ code {
     monospace;
 }
 
-h2{
+h2 {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 46px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 91px;
+  letter-spacing: 2.5px;
   transition: 1s;
 }
 
@@ -63,61 +70,19 @@ h2{
   height: 20px;
 }
 
-/* .corner1{
-  left: 0;
-  top: 0;
-  border-left: solid #fff 1px;
-  border-top: solid #fff 1px;
-} */
-
-.corner2 {
+.corner-top-left {
   left: -20px;
   top: -20px;
   border-right: solid #fff 1px;
   border-bottom: solid #fff 1px;
 }
 
-/* .corner3{
-  right: 0;
-  bottom: 0;
-  border-right: solid #fff 1px;
-  border-bottom: solid #fff 1px;
-} */
-
-.corner4 {
+.corner-bottom-right {
   right: -20px;
   bottom: -20px;
   border-left: solid #fff 1px;
   border-top: solid #fff 1px;
 }
-
-/* .corner5{
-  right: 0;
-  top: 0;
-  border-right: solid #fff 1px;
-  border-top: solid #fff 1px;
-} */
-
-// .corner6 {
-//   right: -20px;
-//   top: -20px;
-//   border-left: solid #fff 1px;
-//   border-bottom: solid #fff 1px;
-// }
-
-/* .corner7{
-  left: 0;
-  bottom: 0;
-  border-left: solid #fff 1px;
-  border-bottom: solid #fff 1px;
-} */
-
-// .corner8 {
-//   left: -20px;
-//   bottom: -20px;
-//   border-right: solid #fff 1px;
-//   border-top: solid #fff 1px;
-// }
 
 .about-jonathan-box-left {
   display: grid;
@@ -129,22 +94,27 @@ h2{
   width: 189px;
 }
 
-.jonathan-box-left-gsap{
+.jonathan-box-left-gsap {
   transition: 1s;
 }
 
-.about-jonathan-box-right-gsap{
+.about-jonathan-box-right-gsap {
   transition: 1s;
 }
 
-#extra-tech-skills-gsap{
+#extra-tech-skills-gsap {
   transition: 1s;
 }
 
 .cv-download-container {
   display: flex;
   align-content: center;
-  justify-content: space-between;
+  justify-content: center;
+  height: 100%;
+}
+
+.cv-download-container img {
+  margin-right: 13px;
 }
 
 .cv-download-container div {
@@ -227,15 +197,6 @@ h2{
 
 .about-jonathan-box-right b {
   font-weight: 600;
-}
-
-.cv-download-container img {
-  margin-right: 13px;
-}
-
-.cv-download-container {
-  display: flex;
-  justify-content: center;
 }
 
 .about-skill-box {
@@ -416,6 +377,10 @@ h2{
   .about-jonathan-box-left {
     margin-right: 0;
     margin-bottom: 25px;
+  }
+
+  .about-jonathan-box-left::before {
+    height: 0;
   }
 
   .about-jonathan-box-right {

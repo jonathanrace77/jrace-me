@@ -27,6 +27,10 @@ var images = {
   git: require("./img/git.png"),
   jonathan: require("./img/jonathan-profile-pic.jpg"),
   pdf: require("./img/pdf-logo.png"),
+  linkedin: require("./img/linkedin.svg"),
+  codepen: require("./img/codepen.svg"),
+  hackerrank: require("./img/hackerrank.svg"),
+  github: require("./img/github.svg"),
 };
 
 var cv = require("./JonathanRaceCv.pdf");
@@ -223,8 +227,7 @@ function App() {
         <h2 id="about-title">About</h2>
 
         <div className="about-jonathan-box">
-          <div className="corner1 about-corner"></div>
-          <div className="corner2 about-corner"></div>
+          <div className="corner-top-left about-corner"></div>
           <div className="about-jonathan-box-left">
             <div className="jonathan-pic-container jonathan-box-left-gsap">
               <img alt="jonathan profile pic" src={images.jonathan}></img>
@@ -268,8 +271,7 @@ function App() {
           </div>
         </div>
         <div id="experienced-about-skill-box" className="about-skill-box">
-          <div className="corner3 about-corner"></div>
-          <div className="corner4 about-corner"></div>
+          <div className="corner-bottom-right about-corner"></div>
 
           {skillBarConstructor("html", "HTML", "Experienced")}
           {skillBarConstructor("css", "CSS", "Experienced")}
@@ -281,9 +283,9 @@ function App() {
           {skillBarConstructor("sass", "Sass", "Proficient")}
 
           <p id="extra-tech-skills-gsap">
-            Further to this, I have familiarity (taken courses / built personal
-            projects) with the following: Illustrator, Bootstrap, jQuery, Redux,
-            D3 JS, Node JS, PHP, SQL, MongoDB, Express, ESLint, JEST & GIT
+            Further to this, I have familiarity with the following: Bootstrap,
+            D3 JS, ESLint, Express, GIT, GSAP, Illustrator, JEST, jQuery,
+            MongoDB, Node JS, PHP, Redux, SQL & Svelte
           </p>
         </div>
       </div>
@@ -430,7 +432,83 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="hero-container"></div>
+
+      <div id="contact-container">
+        <div id="contact">
+          <div id="contact-text" align="center">
+            <h2 id="contact-title">Contact</h2>
+            <p class="contact-form-gsap">
+              Any questions before we <b>start</b>?
+            </p>
+          </div>
+          <div id="contact-form">
+            <form
+              action="https://usebasin.com/f/e981dacb641c"
+              method="POST"
+              id="form"
+            >
+              <label for="name"></label>
+              <input
+                class="contact-form-gsap"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                required
+              ></input>
+              <br></br>
+              <label for="email-address"></label>
+              <input
+                class="contact-form-gsap"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              ></input>
+              <br></br>
+              <label for="message"></label>
+              <input
+                class="contact-form-gsap"
+                type="text"
+                id="message"
+                name="message"
+                placeholder="Message"
+                required
+              ></input>
+              <br></br>
+              <button type="submit" id="submit-button">
+                Send
+              </button>
+            </form>
+          </div>
+
+          <footer>
+            <div id="social-footer">
+              <a
+                href="https://www.linkedin.com/in/jonathanrace1/"
+                target="_blank"
+              >
+                <i class="fab fa-linkedin-in social-media-icons"></i>
+              </a>
+              <a href="https://www.hackerrank.com/racy1" target="_blank">
+                <i class="fab fa-hackerrank social-media-icons"></i>
+              </a>
+              <a href="https://codepen.io/jonathan-race" target="_blank">
+                <i class="fab fa-codepen social-media-icons"></i>
+              </a>
+              <a href="https://github.com/jonathanrace77" target="_blank">
+                <i class="fab fa-github social-media-icons"></i>
+              </a>
+            </div>
+            <div id="copyright">
+              <p>
+                Jonathan Race <span>©2020</span>
+              </p>
+            </div>
+          </footer>
+        </div>
+      </div>
     </div>
   );
 }
