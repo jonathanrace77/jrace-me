@@ -63,6 +63,11 @@ h2 {
   width: 42px;
 }
 
+.logo-container img:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
 .logo-caption {
   font-size: 12px;
   letter-spacing: 4px;
