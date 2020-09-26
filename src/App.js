@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "./css/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import animations from "./animations.js";
+import * as THREE from 'three'
+import DOTS from "vanta/dist/vanta.dots.min";
 
 var images = {
+  logo: require("./img/logo_dark.png"),
   blank: require("./img/blank.png"),
   sketch: require("./img/sketch.png"),
   photoshop: require("./img/photoshop.jpg"),
@@ -33,9 +36,14 @@ var images = {
   github: require("./img/github.svg"),
 };
 
+var threeImport = require("./three.min.js");
+
 var cv = require("./JonathanRaceCv.pdf");
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
 function App() {
+  const [vantaEffect, setVantaEffect] = useState(0);
   const [isBoxOpen, setIsBoxOpen] = React.useState(0);
   const [isSelectedBox, setIsSelectedBox] = React.useState({
     blank: 0,
@@ -81,6 +89,14 @@ function App() {
   const boxVisibility = isBoxOpen ? "grid" : "none";
   const allArrowDirection = isBoxOpen ? "rotate(180deg)" : "rotate(0deg)";
 
+  const myRefAbout = useRef(null);
+  const myRefProjects = useRef(null);
+  const myRefContact = useRef(null);
+  const executeScrollHero = () => scrollToRef(myRefHero);
+  const executeScrollAbout = () => scrollToRef(myRefAbout);
+  const executeScrollProjects = () => scrollToRef(myRefProjects);
+  const executeScrollContact = () => scrollToRef(myRefContact);
+
   // When a checkbox is clicked, change the styling of the checkbox and update the state for it
   const handleCheckBoxClick = (e) => {
     handleCheckBoxStyling(e);
@@ -93,7 +109,23 @@ function App() {
   // When state is updated, update the project selection
   useEffect(() => {
     updateProjectSelection();
-  });
+  }
+);
+
+  const myRefHero = useRef()
+    useLayoutEffect(() => {
+        DOTS({
+          el: myRefHero.current,
+          THREE: THREE,
+          minHeight: 1000.0,
+          minWidth: 1000.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x4720ff,
+          color2: 0x22222,
+          backgroundColor: 0xff00ff,
+        })
+    })
 
   // code to run on component mount
   useEffect(() => {
@@ -222,8 +254,53 @@ function App() {
 
   return (
     <div className="App">
-      <div className="hero-container"></div>
-      <div className="about-container">
+    <script src={threeImport}></script>
+      <div className="hero-container" ref={myRefHero}>
+        <div className="header-container">
+          <div className="logo-section">
+            <div className="logo-container">
+              <img
+                alt="jonathan race logo"
+                src={images.logo}
+                onClick={executeScrollHero}
+              ></img>
+            </div>
+            <div className="logo-caption">
+              FRONT-END<br></br>WEB DEVELOPER
+            </div>
+          </div>
+          <nav>
+            <div className="header-menu-container">
+              <ul>
+                <li className="menu-border-right">
+                  <a href="#about-container" onClick={executeScrollAbout}>
+                    ABOUT
+                  </a>
+                </li>
+                <li className="menu-border-right">
+                  <a href="#about-container" onClick={executeScrollAbout}>
+                    SKILLS
+                  </a>
+                </li>
+                <li>
+                  <a href="#projects-container" onClick={executeScrollProjects}>
+                    PORTFOLIO
+                  </a>
+                </li>
+                <li>
+                  <div
+                    className="header-contact"
+                    onClick={executeScrollContact}
+                  >
+                    CONTACT
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div className="about-container" ref={myRefAbout}>
         <h2 id="about-title">About</h2>
 
         <div className="about-jonathan-box">
@@ -289,7 +366,7 @@ function App() {
           </p>
         </div>
       </div>
-      <div className="projects-container">
+      <div className="projects-container" ref={myRefProjects}>
         <div className="projects-layer">
           <h2 id="projects-title">Projects</h2>
           <div id="tech-select-open-button-container">
@@ -433,11 +510,11 @@ function App() {
         </div>
       </div>
 
-      <div id="contact-container">
+      <div id="contact-container" ref={myRefContact}>
         <div id="contact">
           <div id="contact-text" align="center">
             <h2 id="contact-title">Contact</h2>
-            <p class="contact-form-gsap">
+            <p className="contact-form-gsap">
               Any questions before we <b>start</b>?
             </p>
           </div>

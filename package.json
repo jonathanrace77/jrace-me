@@ -12,7 +12,9 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "three": "^0.120.1",
+    "vanta": "^0.5.19"
   },
   "scripts": {
     "start": "PORT=8000 react-scripts start",

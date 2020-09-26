@@ -1,0 +1,376 @@
+.about-container {
+  width: 100vw;
+  padding: 65px;
+  display: grid;
+  box-sizing: border-box;
+  justify-content: center;
+  background-image: url("../img/about-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  background-attachment: fixed;
+}
+
+.about-container h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.about-container h2:after {
+  background-color: #fff;
+}
+
+.about-jonathan-box {
+  display: grid;
+  grid-template-columns: 189px auto;
+  max-width: 90vw;
+  padding: 25px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(69, 71, 74, 0.25);
+}
+
+.about-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.corner-top-left {
+  left: -20px;
+  top: -20px;
+  border-right: solid #fff 1px;
+  border-bottom: solid #fff 1px;
+}
+
+.corner-bottom-right {
+  right: -20px;
+  bottom: -20px;
+  border-left: solid #fff 1px;
+  border-top: solid #fff 1px;
+}
+
+.about-jonathan-box-left {
+  display: grid;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.about-jonathan-box-left img {
+  width: 189px;
+}
+
+.jonathan-box-left-gsap {
+  transition: 1s;
+}
+
+.about-jonathan-box-right-gsap {
+  transition: 1s;
+}
+
+#extra-tech-skills-gsap {
+  transition: 1s;
+}
+
+.cv-download-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.cv-download-container img {
+  margin-right: 13px;
+}
+
+.cv-download-container div {
+  margin: auto 0 auto 0;
+}
+
+.cv-download-container img {
+  width: 40px;
+}
+
+.cv-download-container a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cv-download-container-bottom {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  width: 189px;
+  display: none;
+  align-content: center;
+  justify-content: left;
+}
+
+.cv-download-container-bottom div {
+  margin: auto 0 auto 0;
+}
+
+.cv-download-container-bottom img {
+  width: 40px;
+  margin-right: 25px;
+}
+
+.cv-download-container-bottom a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.about-jonathan-box-right h3 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #fff;
+  letter-spacing: 1.55px;
+}
+
+.about-jonathan-box-right h4 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #009ddc;
+  letter-spacing: 0.71px;
+}
+
+.about-jonathan-box-right {
+  width: 100%;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+
+.about-jonathan-box-right p {
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #fff;
+  //width: 502px;
+  max-width: 502px;
+  letter-spacing: 0.71px;
+}
+
+.about-jonathan-box-right b {
+  font-weight: 600;
+}
+
+.about-skill-box {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px;
+  padding-bottom: 0px;
+  margin-bottom: 25px;
+  width: 766px;
+  max-width: 90vw;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  background-color: rgba(69, 71, 74, 0.25);
+  color: #fff;
+}
+
+.about-skill-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  height: 36px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.about-logo-bar-container {
+  position: absolute;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.about-skill-logo {
+  display: flex;
+  align-content: center;
+  z-index: 1;
+}
+
+.about-skill-title {
+  display: grid;
+  align-content: center;
+  margin-left: 25px;
+}
+
+.about-skill-logo img {
+  width: 36px;
+}
+
+.about-skill-bar {
+  background: rgba(255, 255, 255, 0.18);
+  width: 566px;
+  max-width: 80%;
+  height: 22px;
+  margin-left: 18px;
+}
+
+.about-skill-bar-fill {
+  position: relative;
+  left: 0;
+  width: 0;
+  background: #0f94c2;
+  height: 22px;
+  transition: 1s ease-in-out;
+}
+
+.about-skill-level {
+  display: grid;
+  align-content: center;
+  position: absolute;
+  right: 25px;
+  height: 36px;
+}
+
+#html-bar {
+  max-width: 90%;
+}
+
+#css-bar {
+  max-width: 90%;
+}
+
+#photoshop-bar {
+  max-width: 80%;
+}
+
+#wordpress-bar {
+  max-width: 80%;
+}
+
+#javascript-bar {
+  max-width: 80%;
+}
+
+#react-bar {
+  max-width: 70%;
+}
+
+#sketch-bar {
+  max-width: 70%;
+}
+
+#sass-bar {
+  max-width: 60%;
+}
+
+.about-skill-level {
+  margin: auto 0 auto 0;
+}
+
+@media only screen and (max-width: 850px) {
+  .about-logo-bar-container {
+    width: auto;
+    max-width: 66vw;
+  }
+
+  .about-skill-bar-container {
+    width: 66vw;
+    height: 22px;
+  }
+
+  .about-skill-bar {
+    width: 100%;
+    max-width: 66vw;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .about-logo-bar-container {
+    width: auto;
+    max-width: 6vw;
+  }
+
+  .about-skill-bar-container {
+    width: 62vw;
+    height: 22px;
+  }
+
+  .about-skill-bar {
+    width: 100%;
+    max-width: 62vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .about-logo-bar-container {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .about-skill-bar-container {
+    width: 100%;
+    height: 22px;
+  }
+
+  .about-skill-bar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-skill-level {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .about-jonathan-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .about-jonathan-box-left img {
+    height: 100%;
+    margin-bottom: 0px;
+    width: 100%;
+  }
+
+  .about-jonathan-box-left {
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+
+  .about-jonathan-box-left::before {
+    height: 0;
+  }
+
+  .about-jonathan-box-right {
+    padding-left: 0;
+  }
+
+  .jonathan-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  .cv-download-container {
+    display: none;
+  }
+
+  .cv-download-container-bottom {
+    display: flex;
+  }
+
+  .about-jonathan-box-right p {
+    width: 100%;
+    max-width: 80vw;
+  }
+}
