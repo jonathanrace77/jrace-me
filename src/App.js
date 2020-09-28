@@ -3,8 +3,8 @@ import gsap from "gsap";
 import "./css/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import animations from "./animations.js";
-import * as THREE from 'three'
-import DOTS from "vanta/dist/vanta.dots.min";
+import * as THREE from "three";
+import GLOBE from "vanta/dist/vanta.globe.min";
 
 var images = {
   logo: require("./img/logo_dark.png"),
@@ -78,13 +78,13 @@ function App() {
   const handleAllButtonClick = () => {
     setIsBoxOpen(Math.abs(isBoxOpen - 1));
     // Messing with GSAP
-    gsap.from(".tech-column", { duration: 0.5, y: -50, opacity: 0 });
-    gsap.to(".tech-column", {
-      duration: 0.3,
-      y: 0,
-      opacity: 1,
-      ease: "back.out(1.7)",
-    });
+    // gsap.from(".tech-column", { duration: 0.5, y: -50, opacity: 0 });
+    // gsap.to(".tech-column", {
+    //   duration: 0.3,
+    //   y: 0,
+    //   opacity: 1,
+    //   ease: "back.out(1.7)",
+    // });
   };
   const boxVisibility = isBoxOpen ? "grid" : "none";
   const allArrowDirection = isBoxOpen ? "rotate(180deg)" : "rotate(0deg)";
@@ -109,23 +109,25 @@ function App() {
   // When state is updated, update the project selection
   useEffect(() => {
     updateProjectSelection();
-  }
-);
+  });
 
-  const myRefHero = useRef()
-    useLayoutEffect(() => {
-        DOTS({
-          el: myRefHero.current,
-          THREE: THREE,
-          minHeight: 1000.0,
-          minWidth: 1000.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x4720ff,
-          color2: 0x22222,
-          backgroundColor: 0xff00ff,
-        })
-    })
+  const myRefHero = useRef(null);
+  useLayoutEffect(() => {
+    GLOBE({
+      el: myRefHero.current,
+      THREE: THREE,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 50.0,
+      minWidth: 50.0,
+      scale: 1.0,
+      scaleMobile: 0.25,
+      color: 0xe5e5e5,
+      color2: 0x0f94c2,
+      backgroundColor: 0xffffff,
+    });
+  });
 
   // code to run on component mount
   useEffect(() => {
@@ -254,50 +256,58 @@ function App() {
 
   return (
     <div className="App">
-    <script src={threeImport}></script>
-      <div className="hero-container" ref={myRefHero}>
-        <div className="header-container">
-          <div className="logo-section">
-            <div className="logo-container">
-              <img
-                alt="jonathan race logo"
-                src={images.logo}
-                onClick={executeScrollHero}
-              ></img>
-            </div>
-            <div className="logo-caption">
-              FRONT-END<br></br>WEB DEVELOPER
-            </div>
+      <script src={threeImport}></script>
+      <div className="mobile-menu-button-container">
+        <div className="mobile-menu-button">
+          <i className="fa fa-bars"></i>
+        </div>
+      </div>
+      <div className="header-container">
+        <div className="logo-section">
+          <div className="logo-container">
+            <img
+              alt="jonathan race logo"
+              src={images.logo}
+              onClick={executeScrollHero}
+            ></img>
           </div>
-          <nav>
-            <div className="header-menu-container">
-              <ul>
-                <li className="menu-border-right">
-                  <a href="#about-container" onClick={executeScrollAbout}>
-                    ABOUT
-                  </a>
-                </li>
-                <li className="menu-border-right">
-                  <a href="#about-container" onClick={executeScrollAbout}>
-                    SKILLS
-                  </a>
-                </li>
-                <li>
-                  <a href="#projects-container" onClick={executeScrollProjects}>
-                    PORTFOLIO
-                  </a>
-                </li>
-                <li>
-                  <div
-                    className="header-contact"
-                    onClick={executeScrollContact}
-                  >
-                    CONTACT
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <div className="logo-caption">
+            FRONT-END<br></br>WEB DEVELOPER
+          </div>
+        </div>
+        <nav>
+          <div className="header-menu-container">
+            <ul>
+              <li className="menu-border-right">
+                <a href="#about-container" onClick={executeScrollAbout}>
+                  ABOUT
+                </a>
+              </li>
+              <li className="menu-border-right">
+                <a href="#about-container" onClick={executeScrollAbout}>
+                  SKILLS
+                </a>
+              </li>
+              <li>
+                <a href="#projects-container" onClick={executeScrollProjects}>
+                  PORTFOLIO
+                </a>
+              </li>
+              <li>
+                <div className="header-contact" onClick={executeScrollContact}>
+                  CONTACT
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div className="hero-container" ref={myRefHero}>
+        <div className="hero-title">
+          <h1>
+            Hi, I'm <b>Jonathan</b>, <br></br>I'm a{" "}
+            <span>Front-End Web Developer</span>
+          </h1>
         </div>
       </div>
       <div className="about-container" ref={myRefAbout}>
@@ -362,7 +372,7 @@ function App() {
           <p id="extra-tech-skills-gsap">
             Further to this, I have familiarity with the following: Bootstrap,
             D3 JS, ESLint, Express, GIT, GSAP, Illustrator, JEST, jQuery,
-            MongoDB, Node JS, PHP, Redux, SQL & Svelte
+            MongoDB, Next JS, Node JS, PHP, Redux, SQL & Svelte
           </p>
         </div>
       </div>

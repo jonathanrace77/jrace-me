@@ -13,6 +13,7 @@
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 .about-container h2 {
@@ -1014,6 +1015,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.mobile-menu-button {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  top: 5px;
+  right: 5px;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 300;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.fa-bars {
+  font-size: 28px;
+}
+
 h2 {
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
@@ -1027,7 +1051,37 @@ h2 {
 }
 
 .hero-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
   height: 100vh;
+}
+
+.hero-title {
+  margin-left: 50px;
+  border-left: solid 6px;
+  height: auto;
+}
+
+.hero-title h1 {
+  margin: 0;
+  padding-left: 30px;
+  font-size: 51px;
+  letter-spacing: 3.5px;
+  line-height: 67px;
+  font-weight: 500;
+  width: auto;
+}
+
+.hero-title b {
+  font-weight: 700;
+}
+
+.hero-title span {
+  color: #DC416A;
+  font-weight: 700;
+  white-space: pre;
 }
 
 .header-container {
@@ -1038,10 +1092,10 @@ h2 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  height: 90px;
+  height: 70px;
   width: 100vw;
   z-index: 100;
 }
@@ -1050,7 +1104,7 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 50px;
   width: 300px;
 }
@@ -1086,7 +1140,7 @@ h2 {
   display: grid;
   -ms-flex-line-pack: center;
       align-content: center;
-  height: 90px;
+  height: 70px;
 }
 
 .header-menu-container ul {
@@ -1156,5 +1210,35 @@ h2 {
   visibility: visible;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
+}
+
+@media only screen and (max-width: 1400px) {
+  .hero-title {
+    margin-left: 50px;
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .header-container {
+    display: none;
+  }
+  .mobile-menu-button {
+    display: -ms-grid;
+    display: grid;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .hero-title span {
+    white-space: normal;
+  }
+  .hero-title {
+    margin-left: 5vw;
+  }
+  .hero-title h1 {
+    font-size: 40px;
+    line-height: 60px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

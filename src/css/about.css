@@ -13,6 +13,7 @@
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 .about-container h2 {
