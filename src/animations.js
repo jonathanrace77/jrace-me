@@ -52,7 +52,6 @@ const animations = () => {
         markers: false,
       },
     width: "100%",
-    stagger: staggerTime, 
   });
 
   tlExtraSkills.from("#extra-tech-skills-gsap", {
@@ -99,16 +98,16 @@ const animations = () => {
     ease: "back.out(1.7)"
   });
 
-  // tlContact.from(".contact-form-gsap", {
-  //   scrollTrigger: {
-  //     trigger: "#contact-title",
-  //     start: "bottom center",
-  //     markers: false,
-  //   },
-  //   opacity: 0,
-  //   y: "50px",
-  //   stagger: staggerTime
-  // });
+  tlContact.from(".contact-form-gsap", {
+    scrollTrigger: {
+      trigger: "#contact-title",
+      start: "bottom bottom",
+      markers: false,
+    },
+    opacity: 0,
+    y: "50px",
+    stagger: staggerTime
+  });
   
   
 };

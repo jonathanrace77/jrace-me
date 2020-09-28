@@ -372,7 +372,7 @@ function App() {
           <p id="extra-tech-skills-gsap">
             Further to this, I have familiarity with the following: Bootstrap,
             D3 JS, ESLint, Express, GIT, GSAP, Illustrator, JEST, jQuery,
-            MongoDB, Next JS, Node JS, PHP, Redux, SQL & Svelte
+            MongoDB, Next JS, Node JS, PHP, Redux, SQL, Svelte, Three JS & Vanta JS
           </p>
         </div>
       </div>
@@ -496,7 +496,7 @@ function App() {
               <img
                 className="project-image"
                 alt="project 1"
-                src={require("./img/project1.png")}
+                src={require("./img/project1.jpg")}
               />
               {techCreator(1)}
             </div>
@@ -504,7 +504,7 @@ function App() {
               <img
                 className="project-image"
                 alt="project 2"
-                src={require("./img/project2.png")}
+                src={require("./img/project2.jpg")}
               />
               {techCreator(2)}
             </div>
@@ -512,7 +512,7 @@ function App() {
               <img
                 className="project-image"
                 alt="project 3"
-                src={require("./img/project3.png")}
+                src={require("./img/project3.jpg")}
               />
               {techCreator(3)}
             </div>
