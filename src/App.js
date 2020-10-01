@@ -43,7 +43,7 @@ var cv = require("./JonathanRaceCv.pdf");
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 function App() {
-  const [vantaEffect, setVantaEffect] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(0);
   const [isBoxOpen, setIsBoxOpen] = React.useState(0);
   const [isSelectedBox, setIsSelectedBox] = React.useState({
     blank: 0,
@@ -193,6 +193,16 @@ function App() {
     }
   };
 
+  function handleMobileMenuClick() {
+    console.log("Checkpoint 1 - Success - button triggered", isMenuOpen);
+    if (isMenuOpen === 0) {
+      setIsMenuOpen(1);
+    }
+    if (isMenuOpen === 1) {
+      setIsMenuOpen(0);
+    }
+  }
+
   // Creates the tech bar underneath each project
   function techCreator(projectNumber) {
     return (
@@ -257,7 +267,10 @@ function App() {
   return (
     <div className="App">
       <script src={threeImport}></script>
-      <div className="mobile-menu-button-container">
+      <div
+        className="mobile-menu-button-container"
+        onClick={handleMobileMenuClick}
+      >
         <div className="mobile-menu-button">
           <i className="fa fa-bars"></i>
         </div>
@@ -297,6 +310,35 @@ function App() {
                 <div className="header-contact" onClick={executeScrollContact}>
                   CONTACT
                 </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <nav className="mobile-nav" style={{ visibility: isMenuOpen ? "visible" : "hidden" }}>
+          <div
+            className="header-menu-container-mobile"
+          >
+            <ul>
+              <li className="menu-border-right">
+                <a href="#about-container" onClick={executeScrollAbout}>
+                  ABOUT
+                </a>
+              </li>
+              <li className="menu-border-right">
+                <a href="#about-container" onClick={executeScrollAbout}>
+                  SKILLS
+                </a>
+              </li>
+              <li>
+                <a href="#projects-container" onClick={executeScrollProjects}>
+                  PORTFOLIO
+                </a>
+              </li>
+              <li>
+                <a href="#header-contact" onClick={executeScrollContact}>
+                  CONTACT
+                </a>
               </li>
             </ul>
           </div>
@@ -372,7 +414,8 @@ function App() {
           <p id="extra-tech-skills-gsap">
             Further to this, I have familiarity with the following: Bootstrap,
             D3 JS, ESLint, Express, GIT, GSAP, Illustrator, JEST, jQuery,
-            MongoDB, Next JS, Node JS, PHP, Redux, SQL, Svelte, Three JS & Vanta JS
+            MongoDB, Next JS, Node JS, PHP, Redux, SQL, Svelte, Three JS & Vanta
+            JS
           </p>
         </div>
       </div>
