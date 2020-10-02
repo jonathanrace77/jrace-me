@@ -11,13 +11,10 @@
   background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  z-index: 300;
+  z-index: 3000;
   width: 50px;
   height: 50px;
   border-radius: 50px;
-}
-
-.fa-bars {
   font-size: 28px;
 }
 
@@ -192,6 +189,8 @@
 
 .mobile-nav {
   display: none;
+  position: fixed;
+  z-index: 1000;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -215,12 +214,13 @@
   .header-menu-container-mobile {
     display: -ms-grid;
     display: grid;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     position: fixed;
     height: 100vh;
     width: 100vw;
     background: #0f94c2;
+    z-index: 1000;
   }
   .header-menu-container-mobile ul {
     display: -ms-grid;

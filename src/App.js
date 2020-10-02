@@ -90,10 +90,12 @@ function App() {
   const allArrowDirection = isBoxOpen ? "rotate(180deg)" : "rotate(0deg)";
 
   const myRefAbout = useRef(null);
+  const myRefSkills = useRef(null);
   const myRefProjects = useRef(null);
   const myRefContact = useRef(null);
   const executeScrollHero = () => scrollToRef(myRefHero);
   const executeScrollAbout = () => scrollToRef(myRefAbout);
+  const executeScrollSkills = () => scrollToRef(myRefSkills);
   const executeScrollProjects = () => scrollToRef(myRefProjects);
   const executeScrollContact = () => scrollToRef(myRefContact);
 
@@ -264,6 +266,11 @@ function App() {
     );
   }
 
+  // Close Mobile Menu
+  function closeMobileMenu(){
+    setIsMenuOpen(0);
+  }
+
   return (
     <div className="App">
       <script src={threeImport}></script>
@@ -271,10 +278,11 @@ function App() {
         className="mobile-menu-button-container"
         onClick={handleMobileMenuClick}
       >
-        <div className="mobile-menu-button">
-          <i className="fa fa-bars"></i>
+        <div className="mobile-menu-button" style={{background: isMenuOpen ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.75)"}}>
+          <i className={isMenuOpen ? "fas fa-times" : "fa fa-bars"}></i>
         </div>
       </div>
+
       <div className="header-container">
         <div className="logo-section">
           <div className="logo-container">
@@ -288,6 +296,7 @@ function App() {
             FRONT-END<br></br>WEB DEVELOPER
           </div>
         </div>
+
         <nav>
           <div className="header-menu-container">
             <ul>
@@ -297,7 +306,7 @@ function App() {
                 </a>
               </li>
               <li className="menu-border-right">
-                <a href="#about-container" onClick={executeScrollAbout}>
+                <a href="#experienced-about-skill-box" onClick={executeScrollSkills}>
                   SKILLS
                 </a>
               </li>
@@ -314,36 +323,37 @@ function App() {
             </ul>
           </div>
         </nav>
-
-        <nav className="mobile-nav" style={{ visibility: isMenuOpen ? "visible" : "hidden" }}>
-          <div
-            className="header-menu-container-mobile"
-          >
-            <ul>
-              <li className="menu-border-right">
-                <a href="#about-container" onClick={executeScrollAbout}>
-                  ABOUT
-                </a>
-              </li>
-              <li className="menu-border-right">
-                <a href="#about-container" onClick={executeScrollAbout}>
-                  SKILLS
-                </a>
-              </li>
-              <li>
-                <a href="#projects-container" onClick={executeScrollProjects}>
-                  PORTFOLIO
-                </a>
-              </li>
-              <li>
-                <a href="#header-contact" onClick={executeScrollContact}>
-                  CONTACT
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
       </div>
+
+      <nav
+        className="mobile-nav"
+        style={{ visibility: isMenuOpen ? "visible" : "hidden" }}
+      >
+        <div className="header-menu-container-mobile">
+          <ul>
+            <li className="menu-border-right">
+              <a href="#about-container" onClick={()=>{executeScrollAbout(); closeMobileMenu();}}>
+                ABOUT
+              </a>
+            </li>
+            <li className="menu-border-right">
+              <a href="#about-container" onClick={()=>{executeScrollSkills(); closeMobileMenu();}}>
+                SKILLS
+              </a>
+            </li>
+            <li>
+              <a href="#projects-container" onClick={()=>{executeScrollProjects(); closeMobileMenu();}}>
+                PORTFOLIO
+              </a>
+            </li>
+            <li>
+              <a href="#header-contact" onClick={()=>{executeScrollContact(); closeMobileMenu();}}>
+                CONTACT
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <div className="hero-container" ref={myRefHero}>
         <div className="hero-title">
           <h1>
@@ -399,7 +409,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div id="experienced-about-skill-box" className="about-skill-box">
+        <div id="experienced-about-skill-box" className="about-skill-box" ref={myRefSkills}>
           <div className="corner-bottom-right about-corner"></div>
 
           {skillBarConstructor("html", "HTML", "Experienced")}
