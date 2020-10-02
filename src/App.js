@@ -1,5 +1,5 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import React, { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
 import "./css/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import animations from "./animations.js";
@@ -30,8 +30,8 @@ var images = {
   git: require("./img/git.png"),
   jonathan: require("./img/jonathan-profile-pic.jpg"),
   jonathan2x: require("./img/jonathan-profile-pic-2x.jpg"),
-  // jonathanMobile: require("./img/jonathan-profile-pic-mobile.jpg"),
-  // jonathanMobile2x: require("./img/jonathan-profile-pic-mobile-2x.jpg"),
+  jonathanMobile: require("./img/jonathan-profile-pic-mobile.jpg"),
+  jonathanMobile2x: require("./img/jonathan-profile-pic-mobile-2x.jpg"),
   pdf: require("./img/pdf-logo.png"),
   linkedin: require("./img/linkedin.svg"),
   codepen: require("./img/codepen.svg"),
@@ -96,6 +96,7 @@ function App() {
   const myRefSkills = useRef(null);
   const myRefProjects = useRef(null);
   const myRefContact = useRef(null);
+  const myRefHero = useRef(null);
   const executeScrollHero = () => scrollToRef(myRefHero);
   const executeScrollAbout = () => scrollToRef(myRefAbout);
   const executeScrollSkills = () => scrollToRef(myRefSkills);
@@ -116,8 +117,9 @@ function App() {
     updateProjectSelection();
   });
 
-  const myRefHero = useRef(null);
-  useLayoutEffect(() => {
+  // code to run on component mount
+  useEffect(() => {
+    animations();
     GLOBE({
       el: myRefHero.current,
       THREE: THREE,
@@ -132,11 +134,6 @@ function App() {
       color2: 0x0f94c2,
       backgroundColor: 0xffffff,
     });
-  });
-
-  // code to run on component mount
-  useEffect(() => {
-    animations();
   }, []);
 
   // Loop through the project tech array and if any of them are selected (in the selectBox object) then show the element
@@ -270,7 +267,7 @@ function App() {
   }
 
   // Close Mobile Menu
-  function closeMobileMenu(){
+  function closeMobileMenu() {
     setIsMenuOpen(0);
   }
 
@@ -281,7 +278,14 @@ function App() {
         className="mobile-menu-button-container"
         onClick={handleMobileMenuClick}
       >
-        <div className="mobile-menu-button" style={{background: isMenuOpen ? "rgba(255, 255, 255, 0)" : "rgba(255, 255, 255, 0.75)"}}>
+        <div
+          className="mobile-menu-button"
+          style={{
+            background: isMenuOpen
+              ? "rgba(255, 255, 255, 0)"
+              : "rgba(255, 255, 255, 0.75)",
+          }}
+        >
           <i className={isMenuOpen ? "fas fa-times" : "fa fa-bars"}></i>
         </div>
       </div>
@@ -309,7 +313,10 @@ function App() {
                 </a>
               </li>
               <li className="menu-border-right">
-                <a href="#experienced-about-skill-box" onClick={executeScrollSkills}>
+                <a
+                  href="#experienced-about-skill-box"
+                  onClick={executeScrollSkills}
+                >
                   SKILLS
                 </a>
               </li>
@@ -335,22 +342,46 @@ function App() {
         <div className="header-menu-container-mobile">
           <ul>
             <li className="menu-border-right">
-              <a href="#about-container" onClick={()=>{executeScrollAbout(); closeMobileMenu();}}>
+              <a
+                href="#about-container"
+                onClick={() => {
+                  executeScrollAbout();
+                  closeMobileMenu();
+                }}
+              >
                 ABOUT
               </a>
             </li>
             <li className="menu-border-right">
-              <a href="#about-container" onClick={()=>{executeScrollSkills(); closeMobileMenu();}}>
+              <a
+                href="#about-container"
+                onClick={() => {
+                  executeScrollSkills();
+                  closeMobileMenu();
+                }}
+              >
                 SKILLS
               </a>
             </li>
             <li>
-              <a href="#projects-container" onClick={()=>{executeScrollProjects(); closeMobileMenu();}}>
+              <a
+                href="#projects-container"
+                onClick={() => {
+                  executeScrollProjects();
+                  closeMobileMenu();
+                }}
+              >
                 PORTFOLIO
               </a>
             </li>
             <li>
-              <a href="#header-contact" onClick={()=>{executeScrollContact(); closeMobileMenu();}}>
+              <a
+                href="#header-contact"
+                onClick={() => {
+                  executeScrollContact();
+                  closeMobileMenu();
+                }}
+              >
                 CONTACT
               </a>
             </li>
@@ -372,7 +403,23 @@ function App() {
           <div className="corner-top-left about-corner"></div>
           <div className="about-jonathan-box-left">
             <div className="jonathan-pic-container jonathan-box-left-gsap">
-              <img alt="jonathan profile pic" src={images.jonathan} srcset={images.jonathan + ' 1x,' + images.jonathan2x + ' 2x'}></img>
+              <img
+                id="jonathan-profile-pic"
+                alt="jonathan profile pic"
+                src={images.jonathan}
+                srcSet={images.jonathan + " 1x," + images.jonathan2x + " 2x"}
+              ></img>
+              <img
+                id="jonathan-profile-pic-mobile"
+                alt="jonathan profile pic"
+                src={images.jonathan}
+                srcSet={
+                  images.jonathanMobile +
+                  " 1x," +
+                  images.jonathanMobile2x +
+                  " 2x"
+                }
+              ></img>
             </div>
             <div className="cv-download-container jonathan-box-left-gsap">
               <div>
@@ -412,7 +459,11 @@ function App() {
             </div>
           </div>
         </div>
-        <div id="experienced-about-skill-box" className="about-skill-box" ref={myRefSkills}>
+        <div
+          id="experienced-about-skill-box"
+          className="about-skill-box"
+          ref={myRefSkills}
+        >
           <div className="corner-bottom-right about-corner"></div>
 
           {skillBarConstructor("html", "HTML", "Experienced")}
@@ -590,9 +641,9 @@ function App() {
               method="POST"
               id="form"
             >
-              <label for="name"></label>
+              <label htmlFor="name"></label>
               <input
-                class="contact-form-gsap"
+                className="contact-form-gsap"
                 type="text"
                 id="name"
                 name="name"
@@ -600,9 +651,9 @@ function App() {
                 required
               ></input>
               <br></br>
-              <label for="email-address"></label>
+              <label htmlFor="email-address"></label>
               <input
-                class="contact-form-gsap"
+                className="contact-form-gsap"
                 type="email"
                 id="email"
                 name="email"
@@ -610,9 +661,9 @@ function App() {
                 required
               ></input>
               <br></br>
-              <label for="message"></label>
+              <label htmlFor="message"></label>
               <input
-                class="contact-form-gsap"
+                className="contact-form-gsap"
                 type="text"
                 id="message"
                 name="message"
@@ -632,16 +683,16 @@ function App() {
                 href="https://www.linkedin.com/in/jonathanrace1/"
                 target="_blank"
               >
-                <i class="fab fa-linkedin-in social-media-icons"></i>
+                <i className="fab fa-linkedin-in social-media-icons"></i>
               </a>
               <a href="https://www.hackerrank.com/racy1" target="_blank">
-                <i class="fab fa-hackerrank social-media-icons"></i>
+                <i className="fab fa-hackerrank social-media-icons"></i>
               </a>
               <a href="https://codepen.io/jonathan-race" target="_blank">
-                <i class="fab fa-codepen social-media-icons"></i>
+                <i className="fab fa-codepen social-media-icons"></i>
               </a>
               <a href="https://github.com/jonathanrace77" target="_blank">
-                <i class="fab fa-github social-media-icons"></i>
+                <i className="fab fa-github social-media-icons"></i>
               </a>
             </div>
             <div id="copyright">

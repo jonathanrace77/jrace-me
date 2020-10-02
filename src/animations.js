@@ -47,10 +47,10 @@ const animations = () => {
 
   tlSkillBar.to(".about-skill-bar-fill-design", {
     scrollTrigger: {
-        trigger: "#experienced-about-skill-box",
-        start: "center bottom",
-        markers: false,
-      },
+      trigger: "#experienced-about-skill-box",
+      start: "center bottom",
+      markers: false,
+    },
     width: "100%",
   });
 
@@ -72,7 +72,7 @@ const animations = () => {
     },
     opacity: 0,
     x: "-50px",
-    ease: "back.out(1.7)"
+    ease: "back.out(1.7)",
   });
 
   tlProjectsTitle.from(".project", {
@@ -84,7 +84,7 @@ const animations = () => {
     opacity: 0,
     y: "50px",
     stagger: staggerTime,
-    ease: "back.out(1.7)"
+    ease: "back.out(1.7)",
   });
 
   tlTitle.from("#contact-title", {
@@ -95,7 +95,7 @@ const animations = () => {
     },
     opacity: 0,
     x: "-50px",
-    ease: "back.out(1.7)"
+    ease: "back.out(1.7)",
   });
 
   tlContact.from(".contact-form-gsap", {
@@ -106,10 +106,8 @@ const animations = () => {
     },
     opacity: 0,
     y: "50px",
-    stagger: staggerTime
+    stagger: staggerTime,
   });
-  
-  
 };
 
 // Exporting the component

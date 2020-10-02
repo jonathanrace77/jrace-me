@@ -1,6 +1,6 @@
 {
   "name": "jrace-me",
-  "homepage": "http://jrace.me/build/",
+  "homepage": "http://jrace.me",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

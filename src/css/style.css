@@ -554,6 +554,7 @@
 
 .about-skill-logo img {
   width: 36px;
+  height: 36px;
 }
 
 .about-skill-bar {
@@ -668,6 +669,10 @@
   }
 }
 
+#jonathan-profile-pic-mobile {
+  display: none;
+}
+
 @media only screen and (max-width: 550px) {
   .about-jonathan-box {
     display: -webkit-box;
@@ -700,6 +705,12 @@
             justify-content: center;
     margin-bottom: 0;
     height: 100%;
+  }
+  #jonathan-profile-pic-mobile {
+    display: block;
+  }
+  #jonathan-profile-pic {
+    display: none;
   }
   .cv-download-container {
     display: none;
