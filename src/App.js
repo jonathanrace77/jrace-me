@@ -29,6 +29,9 @@ var images = {
   mongodb: require("./img/mongodb.png"),
   git: require("./img/git.png"),
   jonathan: require("./img/jonathan-profile-pic.jpg"),
+  jonathan2x: require("./img/jonathan-profile-pic-2x.jpg"),
+  // jonathanMobile: require("./img/jonathan-profile-pic-mobile.jpg"),
+  // jonathanMobile2x: require("./img/jonathan-profile-pic-mobile-2x.jpg"),
   pdf: require("./img/pdf-logo.png"),
   linkedin: require("./img/linkedin.svg"),
   codepen: require("./img/codepen.svg"),
@@ -369,7 +372,7 @@ function App() {
           <div className="corner-top-left about-corner"></div>
           <div className="about-jonathan-box-left">
             <div className="jonathan-pic-container jonathan-box-left-gsap">
-              <img alt="jonathan profile pic" src={images.jonathan}></img>
+              <img alt="jonathan profile pic" src={images.jonathan} srcset={images.jonathan + ' 1x,' + images.jonathan2x + ' 2x'}></img>
             </div>
             <div className="cv-download-container jonathan-box-left-gsap">
               <div>
