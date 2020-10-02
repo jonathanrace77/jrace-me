@@ -1,4 +1,5 @@
 .about-container {
+  overflow-x: hidden;
   width: 100vw;
   padding: 65px;
   display: -ms-grid;
@@ -13,7 +14,6 @@
   background-size: cover;
   background-position: center bottom;
   background-attachment: fixed;
-  overflow-x: hidden;
 }
 
 .about-container h2 {
@@ -374,6 +374,12 @@
 }
 
 @media only screen and (max-width: 550px) {
+  .about-corner {
+    display: none;
+  }
+  .about-container {
+    background-attachment: scroll;
+  }
   .about-jonathan-box {
     display: -webkit-box;
     display: -ms-flexbox;

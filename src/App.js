@@ -464,7 +464,7 @@ function App() {
           className="about-skill-box"
           ref={myRefSkills}
         >
-          <div className="corner-bottom-right about-corner"></div>
+        <div className="corner-bottom-right about-corner"></div>
 
           {skillBarConstructor("html", "HTML", "Experienced")}
           {skillBarConstructor("css", "CSS", "Experienced")}
