@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
 import App from './App';
-import TetrisApp from './tetris/App';
-import './tetris/tetrisIndex.css';
-
-
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TetrisApp />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
