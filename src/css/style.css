@@ -54,6 +54,7 @@
 
 .header-container {
   position: fixed;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,6 +102,15 @@
   margin: 0 0 0 25px;
   width: 154px;
   height: 40px;
+}
+
+@media only screen and (max-width: 320px) {
+  .logo-caption {
+    display: none;
+  }
+  .logo-container {
+    border-right: none;
+  }
 }
 
 .header-menu-container {
@@ -1332,8 +1342,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-q
-h2 {
+q h2 {
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
   font-size: 46px;
@@ -1343,5 +1352,43 @@ h2 {
   letter-spacing: 2.5px;
   -webkit-transition: 1s;
   transition: 1s;
+}
+
+.ReactModalPortal,
+.ReactModal__Overlay {
+  z-index: 1000;
+}
+
+.ProjectModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  padding: 2em;
+  min-width: 300px;
+  max-width: 100%;
+  background-color: rgba(69, 71, 74, 0.25);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  outline: transparent;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.ProjectModal button {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: none;
+  border: none;
+  visibility: hidden;
+  color: white;
+}
+
+.ProjectModal button:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00d";
+  visibility: visible;
 }
 /*# sourceMappingURL=style.css.map */

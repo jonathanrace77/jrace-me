@@ -1,9 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
-import TetrisApp from './tetris/App';
+
+import './index.css';
 import './tetris/tetrisIndex.css';
 
 
@@ -11,7 +13,6 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TetrisApp />
     <App />
   </React.StrictMode>,
   document.getElementById('root')

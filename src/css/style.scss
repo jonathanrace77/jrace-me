@@ -1,33 +1,67 @@
-@import "hero", "about", "tech-box-container", "projects", "contact", "footer";
-
+@import "hero",
+"about",
+"tech-box-container",
+"projects",
+"contact",
+"footer";
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #45474a;
-  font-family: "Raleway", sans-serif;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #45474a;
+    font-family: "Raleway", sans-serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}q
-
-h2 {
-  text-align: center;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 46px;
-  font-weight: 600;
-  margin: 0;
-  margin-bottom: 91px;
-  letter-spacing: 2.5px;
-  transition: 1s;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+q h2 {
+    text-align: center;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 46px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 91px;
+    letter-spacing: 2.5px;
+    transition: 1s;
+}
+
+.ReactModalPortal,
+.ReactModal__Overlay {
+    z-index: 1000;
+}
+
+.ProjectModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    padding: 2em;
+    min-width: 300px;
+    max-width: 100%;
+    background-color: rgba(69, 71, 74, 0.25);
+    transform: translate(-50%, -50%);
+    outline: transparent;
+    backdrop-filter: blur(10px);
+    button {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        background: none;
+        border: none;
+        visibility: hidden;
+        color: rgba(255, 255, 255, 1);
+    }
+    button:after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f00d";
+        visibility: visible;
+    }
+}

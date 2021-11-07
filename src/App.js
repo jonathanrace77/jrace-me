@@ -6,6 +6,13 @@ import animations from "./animations.js";
 import * as THREE from "three";
 import GLOBE from "vanta/dist/vanta.globe.min";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
+import ReactModal from 'react-modal';
+
+import TetrisApp from './tetris/App';
+
 var images = {
   logo: require("./img/logo_dark.png"),
   blank: require("./img/blank.png"),
@@ -72,6 +79,9 @@ function App() {
     jest: 1,
     git: 1,
   });
+
+  const [showModal, setShowModal] = useState(false);
+
   const projectTechList = [
     ["sketch", "photoshop", "html", "sass", "javascript", "jquery", "git"],
     ["photoshop", "wordpress", "css", "blank", "blank", "blank", "blank"],
@@ -271,6 +281,15 @@ function App() {
     setIsMenuOpen(0);
   }
 
+  // Project Modals
+  function handleProjectModal() {
+    setShowModal(true);
+  }
+
+  function handleCloseModal() {
+    setShowModal(false);
+  }
+
   return (
     <div className="App">
       <script src={threeImport}></script>
@@ -464,7 +483,7 @@ function App() {
           className="about-skill-box"
           ref={myRefSkills}
         >
-        <div className="corner-bottom-right about-corner"></div>
+          <div className="corner-bottom-right about-corner"></div>
 
           {skillBarConstructor("html", "HTML", "Experienced")}
           {skillBarConstructor("css", "CSS", "Experienced")}
@@ -591,7 +610,7 @@ function App() {
             </div>
           </div>
           <div id="projects-grid">
-            <div id="project0" className="project">
+            <div id="project0" className="project" onClick={handleProjectModal}>
               <img
                 className="project-image"
                 alt="project 0"
@@ -703,6 +722,22 @@ function App() {
           </footer>
         </div>
       </div>
+      <ReactModal
+        isOpen={showModal}
+        contentLabel="Inline Styles Modal Example"
+        className="ProjectModal"
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)'
+          },
+          content: {
+            color: 'lightsteelblue'
+          }
+        }}
+      >
+        <button onClick={handleCloseModal}>X</button>
+        <TetrisApp />
+      </ReactModal>
     </div>
   );
 }

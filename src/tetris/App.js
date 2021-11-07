@@ -41,6 +41,7 @@ class TetrisApp extends React.Component {
     };
 
     this.boardCreator = this.boardCreator.bind(this);
+    this.tetrisControls = this.tetrisControls.bind(this);
     this.fallLogic = this.fallLogic.bind(this);
     this.handleArrowKey = this.handleArrowKey.bind(this);
     this.fallTimer = this.fallTimer.bind(this);
@@ -49,20 +50,6 @@ class TetrisApp extends React.Component {
 
   // Builds initial board, includes CSS rules
   boardCreator() {
-    const styleCurrent = {
-      background: "#00adb5",
-      borderStyle: "outset",
-    };
-
-    const styleFilled = {
-      background: "#787878",
-      borderStyle: "outset",
-    };
-
-    const styleEmpty = {
-      background: "#EEE",
-    };
-
     // Create a board
     let boardArray = [];
 
@@ -70,12 +57,12 @@ class TetrisApp extends React.Component {
       boardArray[i] = this.state.board[i].map((value, index) => {
         return (
           <div
-            style={
+            class={
               value === 1
-                ? styleFilled
+                ? "block-filled"
                 : value === 2
-                  ? styleCurrent
-                  : styleEmpty
+                  ? "block-active"
+                  : "block-empty"
             }
             key={index}
           ></div>
@@ -85,12 +72,22 @@ class TetrisApp extends React.Component {
     return boardArray;
   }
 
+  // Builds controls for mobile
+  tetrisControls(){
+    return <div id="tetris-button-container">
+      <i class="fas fa-arrow-left tetris-mobile-button" id="tetris-left-button"></i>
+      <i class="fas fa-arrow-down tetris-mobile-button" id="tetris-down-button"></i>
+      <i class="fas fa-sync-alt tetris-mobile-button" id="tetris-rotate-button"></i>
+      <i class="fas fa-arrow-right tetris-mobile-button" id="tetris-right-button"></i>
+      </div>;
+  }
+
   // Handles Arrow Key Press Down
   handleArrowKey(e) {
     e.preventDefault();
     this.setState({ iskeyFuncTriggered: 0 });
 
-    if (e.key === "ArrowRight") {
+    if (e.key === "ArrowRight" || e.target.id === "tetris-right-button") {
       this.setState((prevState) => {
         let blockX = prevState.blockX;
         if (canBlockMoveLeftRight(this.state.board, "right", 1)) {
@@ -100,7 +97,7 @@ class TetrisApp extends React.Component {
       });
     }
 
-    if (e.key === "ArrowLeft") {
+    if (e.key === "ArrowLeft" || e.target.id === "tetris-left-button") {
       this.setState((prevState) => {
         let blockX = prevState.blockX;
         if (canBlockMoveLeftRight(this.state.board, "left", 1)) {
@@ -110,7 +107,7 @@ class TetrisApp extends React.Component {
       });
     }
 
-    if (e.key === "ArrowUp") {
+    if (e.key === "ArrowUp" || e.target.id === "tetris-rotate-button") {
       let newRot = this.state.blockRot;
       if (newRot < 3) {
         newRot++;
@@ -136,7 +133,7 @@ class TetrisApp extends React.Component {
       }
     }
 
-    if (e.key === "ArrowDown") {
+    if (e.key === "ArrowDown" || e.target.id === "tetris-down-button") {
       this.setState({
         isDownPressed: 1,
       });
@@ -146,7 +143,7 @@ class TetrisApp extends React.Component {
   // Handles Arrow Key Press Up
   handleArrowKeyUp(e) {
     this.setState({ iskeyFuncTriggered: 0 });
-    if (e.key === "ArrowDown") {
+    if (e.key === "ArrowDown" || e.target.id === "tetris-down-button") {
       this.setState({
         isDownPressed: 0,
       });
@@ -257,7 +254,6 @@ class TetrisApp extends React.Component {
           // Update the timer if able to move down
           if (canMoveDown && newTimerCount < 20) {
             if (!prevState.isDownPressed) {
-              console.log('Checkpoint 1 - Success - Will increase timer count');
               newTimerCount++;
             }
           } else {
@@ -385,13 +381,46 @@ class TetrisApp extends React.Component {
         this.handleArrowKeyUp(e);
       }
     });
+    document.addEventListener("touchstart", (e) => {
+      if (!e.target.matches('.tetris-mobile-button')) return;
+      e.preventDefault();
+
+      if (!this.state.iskeyFuncTriggered) {
+        this.handleArrowKey(e);
+      }
+    });
+    document.addEventListener("touchend", (e) => {
+      if (!e.target.matches('.tetris-mobile-button')) return;
+      e.preventDefault();
+
+      if (!this.state.iskeyFuncTriggered) {
+        this.handleArrowKeyUp(e);
+      }
+    });
+    document.addEventListener("mousedown", (e) => {
+      if (!e.target.matches('.tetris-mobile-button')) return;
+      e.preventDefault();
+
+      if (!this.state.iskeyFuncTriggered) {
+        this.handleArrowKey(e);
+      }
+    });
+    document.addEventListener("mouseup", (e) => {
+      if (!e.target.matches('.tetris-mobile-button')) return;
+      e.preventDefault();
+
+      if (!this.state.iskeyFuncTriggered) {
+        this.handleArrowKeyUp(e);
+      }
+    });
   }
 
   render() {
     return (
       <div className="BoardContainer">
-        <h1 class="tetris-title">Tetris</h1>
+        <h3 className="tetris-title">TETRIS</h3>
         <div className="Board">{this.boardCreator()}</div>
+        <div className="TetrisControls">{this.tetrisControls()}</div>
         <div className="ScoreBoard">{this.state.score}</div>
       </div>
     );
