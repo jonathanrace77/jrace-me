@@ -87,6 +87,7 @@ function App() {
     ["photoshop", "wordpress", "css", "blank", "blank", "blank", "blank"],
     ["sketch", "photoshop", "html", "sass", "javascript", "jquery", "blank"],
     ["sketch", "html", "css", "javascript", "jquery", "blank", "blank"],
+    ["html", "css", "javascript", "react", "blank", "blank", "blank"]
   ];
   const handleAllButtonClick = () => {
     setIsBoxOpen(Math.abs(isBoxOpen - 1));
@@ -217,12 +218,13 @@ function App() {
 
   // Creates the tech bar underneath each project
   function techCreator(projectNumber) {
+    console.log("techCreator called OK")
     return (
       <div className="project-skills-container">
         {[0, 1, 2, 3, 4, 5, 6].map((n) => {
           var imgSrc = projectTechList[projectNumber][n];
           return (
-            <div className="tech-square">
+            <div key={"tech-square-project-" + projectNumber} className="tech-square">
               <img
                 alt="tech used"
                 className="tech-square-img"
@@ -259,7 +261,7 @@ function App() {
   // Template for tech Select boxes
   function techSelectConstructor(tech, techName) {
     return (
-      <li>
+      <li key={tech + "-key"}>
         <div className="check-container">
           <div id={tech + "-check-label"} className="check-label">
             {techName}
@@ -326,12 +328,12 @@ function App() {
         <nav>
           <div className="header-menu-container">
             <ul>
-              <li className="menu-border-right">
+              <li key="menu-border-right-about" className="menu-border-right">
                 <a href="#about-container" onClick={executeScrollAbout}>
                   ABOUT
                 </a>
               </li>
-              <li className="menu-border-right">
+              <li key="menu-border-right-skill" className="menu-border-right">
                 <a
                   href="#experienced-about-skill-box"
                   onClick={executeScrollSkills}
@@ -339,12 +341,12 @@ function App() {
                   SKILLS
                 </a>
               </li>
-              <li>
+              <li key="menu-border-right-portfolio">
                 <a href="#projects-container" onClick={executeScrollProjects}>
                   PORTFOLIO
                 </a>
               </li>
-              <li>
+              <li key="menu-border-right-contact">
                 <div className="header-contact" onClick={executeScrollContact}>
                   CONTACT
                 </div>
@@ -360,7 +362,7 @@ function App() {
       >
         <div className="header-menu-container-mobile">
           <ul>
-            <li className="menu-border-right">
+            <li key="menu-border-right-mobile-about" className="menu-border-right">
               <a
                 href="#about-container"
                 onClick={() => {
@@ -371,7 +373,7 @@ function App() {
                 ABOUT
               </a>
             </li>
-            <li className="menu-border-right">
+            <li key="menu-border-right-mobile-skills" className="menu-border-right">
               <a
                 href="#about-container"
                 onClick={() => {
@@ -382,7 +384,7 @@ function App() {
                 SKILLS
               </a>
             </li>
-            <li>
+            <li key="menu-border-right-mobile-portfolio">
               <a
                 href="#projects-container"
                 onClick={() => {
@@ -393,7 +395,7 @@ function App() {
                 PORTFOLIO
               </a>
             </li>
-            <li>
+            <li key="menu-border-right-mobile-contact">
               <a
                 href="#header-contact"
                 onClick={() => {
@@ -610,13 +612,12 @@ function App() {
             </div>
           </div>
           <div id="projects-grid">
-            <div id="project0" className="project" onClick={handleProjectModal}>
+            <div id="project0" className="project">
               <img
                 className="project-image"
                 alt="project 0"
                 src={require("./img/project0.png")}
               />
-              {techCreator(0)}
             </div>
             <div id="project1" className="project">
               <img
@@ -624,7 +625,6 @@ function App() {
                 alt="project 1"
                 src={require("./img/project1.jpg")}
               />
-              {techCreator(1)}
             </div>
             <div id="project2" className="project">
               <img
@@ -632,7 +632,6 @@ function App() {
                 alt="project 2"
                 src={require("./img/project2.jpg")}
               />
-              {techCreator(2)}
             </div>
             <div id="project3" className="project">
               <img
@@ -640,7 +639,13 @@ function App() {
                 alt="project 3"
                 src={require("./img/project3.jpg")}
               />
-              {techCreator(3)}
+            </div>
+            <div id="project4" className="project project-link" onClick={handleProjectModal}>
+              <img
+                className="project-image"
+                alt="project 4"
+                src={require("./img/project4.png")}
+              />
             </div>
           </div>
         </div>

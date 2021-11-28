@@ -1145,6 +1145,10 @@ h2:after {
   }
 }
 
+.project-link:hover {
+  cursor: pointer;
+}
+
 #contact {
   position: relative;
   height: auto;

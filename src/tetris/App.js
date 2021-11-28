@@ -57,7 +57,7 @@ class TetrisApp extends React.Component {
       boardArray[i] = this.state.board[i].map((value, index) => {
         return (
           <div
-            class={
+            className={
               value === 1
                 ? "block-filled"
                 : value === 2
@@ -75,10 +75,10 @@ class TetrisApp extends React.Component {
   // Builds controls for mobile
   tetrisControls(){
     return <div id="tetris-button-container">
-      <i class="fas fa-arrow-left tetris-mobile-button" id="tetris-left-button"></i>
-      <i class="fas fa-arrow-down tetris-mobile-button" id="tetris-down-button"></i>
-      <i class="fas fa-sync-alt tetris-mobile-button" id="tetris-rotate-button"></i>
-      <i class="fas fa-arrow-right tetris-mobile-button" id="tetris-right-button"></i>
+      <i className="fas fa-arrow-left tetris-mobile-button" id="tetris-left-button"></i>
+      <i className="fas fa-arrow-down tetris-mobile-button" id="tetris-down-button"></i>
+      <i className="fas fa-sync-alt tetris-mobile-button" id="tetris-rotate-button"></i>
+      <i className="fas fa-arrow-right tetris-mobile-button" id="tetris-right-button"></i>
       </div>;
   }
 
